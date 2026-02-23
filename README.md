@@ -42,30 +42,9 @@ As an Intern at **EshopBox**, I architect ETL pipelines and design strategic das
 
 ---
 
-## 📊 GitHub Analytics
-<p align="center">
-  <img width="48%" src="https://github-readme-stats.vercel.app/api?username=rixabhh&theme=dark&hide_border=false&include_all_commits=true&count_private=true" />
-  <img width="48%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=rixabhh&theme=dark&hide_border=false&include_all_commits=true&count_private=true&layout=compact" />
-</p>
-
-<p align="center">
-  <img width="100%" src="https://nirzak-streak-stats.vercel.app/?user=rixabhh&theme=dark&hide_border=false" />
-</p>
-
-### 🏆 GitHub Trophies
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=rixabhh&theme=dark&no-frame=false&no-bg=false&margin-w=4" />
-</p>
-
----
-
 ## 🌐 Let's Connect
 <p align="left">
 <a href="https://linkedin.com/in/rishabbh" target="blank"><img align="center" src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
 <a href="https://x.com/rixabhh" target="blank"><img align="center" src="https://img.shields.io/badge/X-black.svg?style=for-the-badge&logo=X&logoColor=white" /></a>
 <a href="mailto:pro.rishabhsingh@gmail.com" target="blank"><img align="center" src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" /></a>
-</p>
-
-<p align="right">
-  <img src="https://visitcount.itsvg.in/api?id=rixabhh&icon=10&color=13" />
 </p>
