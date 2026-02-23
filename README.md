@@ -11,7 +11,7 @@
 ## 🚀 About Me
 I bridge the gap between **raw numbers** and **impactful product outcomes**. Currently a B.Tech CSE student specializing in Data Science, my journey has evolved from cleaning static datasets to architecting the infrastructure that guides organizational strategy.
 
-As an Intern at **EshopBox**, I build the ETL pipelines and strategic dashboards that drive decision-making. I’m fascinated by the engineering that powers data-driven decisions and the strategy that scales products.
+As an Intern at **EshopBox**, I architect ETL pipelines and design strategic dashboards that power data-driven decision-making across product and business functions. I combine engineering rigor with product strategy to translate raw data into actionable insights that scale organizational impact.
 
 ---
 
