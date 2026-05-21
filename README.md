@@ -1,44 +1,44 @@
-# 👋 Hi, I'm Rishabh! 
-### Product & Data Analyst | B.Tech CSE (Data Science)
+# 👋 Hi, I'm Rishabh!
+### Technical Product Manager | AI & Automation | SaaS & B2B
 
 <p align="left">
-  <img src="https://img.shields.io/badge/Status-Interning%20@%20EshopBox-blue?style=flat-square&logo=google-analytics&logoColor=white" />
-  <img src="https://img.shields.io/badge/Focus-Product%20Growth%20%26%20Data%20Eng-green?style=flat-square" />
+  <img src="https://img.shields.io/badge/Status-Product%20Analyst%20@%20Amkette-blue?style=flat-square&logo=google-analytics&logoColor=white" />
+  <img src="https://img.shields.io/badge/Focus-Technical%20PM%20%26%20AI%20Systems-green?style=flat-square" />
 </p>
 
 ---
 
 ## 🚀 About Me
-I bridge the gap between **raw numbers** and **impactful product outcomes**. Currently a B.Tech CSE student specializing in Data Science, my journey has evolved from cleaning static datasets to architecting the infrastructure that guides organizational strategy.
+I sit at the intersection of **product strategy** and **engineering execution** - owning the full lifecycle from discovery and spec authoring to cross-functional delivery and instrumentation.
 
-As an Intern at **EshopBox**, I architect ETL pipelines and design strategic dashboards that power data-driven decision-making across product and business functions. I combine engineering rigor with product strategy to translate raw data into actionable insights that scale organizational impact.
+Currently a Product Analyst at **Amkette (EvoFox)**, I lead CRO strategy, internal CX platform development, and AI/agentic automation systems. Previously at **EshopBox**, I shipped a WhatsApp Sales Bot, a multi-provider LLM lead-scoring system, and an identity resolution layer that restored CRM accuracy to 95%. I'm pursuing a B.Tech CSE (Data Science) at SIET, graduating 2027.
 
 ---
 
 ## 📈 Impact Highlights
 | Metric | Achievement |
 | :--- | :--- |
-| **+25%** | Boost in lead capture through the **Eshopbox Plus Kiosk Flow** launch. |
-| **40%** | Automation of L1 customer queries via **Virtuans AI (WhatsApp Chatbot)**. |
-| **40%** | Reduction in manual reporting bandwidth through **automated ETL pipelines**. |
-| **30%** | Reduction in engineering rework by leading **Agile Sprint Planning** & JIRA management. |
-| **100k+** | Records managed via **Python/Pandas** with 100% mapping accuracy. |
+| **40%** | L1 support queries automated via **WhatsApp Sales Discovery Bot** (Meta Graph API, Cloudflare Workers, Zoho CRM) |
+| **30%** | Engineering rework reduced through structured **Technical Spec authoring** across 70+ sprint items |
+| **95%** | CRM data accuracy restored via **identity resolution layer** and event schema rollout |
+| **+25%** | Lead capture uplift from the **Eshopbox Plus Kiosk Flow** launch |
+| **126** | Commits shipped on **TheAlgorithm** solo - from zero to CI/CD on GitHub Actions |
 
 ---
 
 ## 🛠️ Technical Arsenal
 
-### 📊 Data Science & BI
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-CC2927?style=flat-square&logo=mysql&logoColor=white) ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white) ![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white) ![PowerBI](https://img.shields.io/badge/Power_BI-F2C811?style=flat-square&logo=powerbi&logoColor=black) ![Tableau](https://img.shields.io/badge/Tableau-E97627?style=flat-square&logo=tableau&logoColor=white) ![Looker](https://img.shields.io/badge/Looker%20Studio-4285F4?style=flat-square&logo=google-looker&logoColor=white) ![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white) ![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white)
-
 ### 💡 Product & Strategy
-![Jira](https://img.shields.io/badge/JIRA-0052CC?style=flat-square&logo=jira&logoColor=white) ![GitHub Projects](https://img.shields.io/badge/GitHub_Projects-181717?style=flat-square&logo=github&logoColor=white) ![Notion](https://img.shields.io/badge/Notion-000000?style=flat-square&logo=notion&logoColor=white) ![HubSpot](https://img.shields.io/badge/HubSpot-FF7A59?style=flat-square&logo=hubspot&logoColor=white) ![A/B Testing](https://img.shields.io/badge/A/B%20Testing-blueviolet?style=flat-square)
+![Roadmapping](https://img.shields.io/badge/Roadmapping-blueviolet?style=flat-square) ![PRD & Spec Authoring](https://img.shields.io/badge/PRD%20%26%20Spec%20Authoring-blueviolet?style=flat-square) ![Jira](https://img.shields.io/badge/JIRA-0052CC?style=flat-square&logo=jira&logoColor=white) ![GitHub Projects](https://img.shields.io/badge/GitHub_Projects-181717?style=flat-square&logo=github&logoColor=white) ![Notion](https://img.shields.io/badge/Notion-000000?style=flat-square&logo=notion&logoColor=white) ![A/B Testing](https://img.shields.io/badge/A/B%20Testing-blueviolet?style=flat-square)
 
-### ⚙️ Development & Cloud
-![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=flat-square&logo=fastapi) ![Django](https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white) ![NodeJS](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white) ![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazon-aws&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white) ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white) ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black)
+### 🤖 AI, LLM & Automation
+![Multi-LLM Chains](https://img.shields.io/badge/Multi--LLM%20Chains-black?style=flat-square&logo=openai) ![Prompt Engineering](https://img.shields.io/badge/Prompt%20Engineering-blue?style=flat-square) ![Agentic Workflows](https://img.shields.io/badge/Agentic%20Workflows-white?style=flat-square&logo=replicate) ![RAG Pipelines](https://img.shields.io/badge/RAG%20Pipelines-black?style=flat-square) ![Webhook & State Machine Design](https://img.shields.io/badge/Webhook%20%26%20State%20Machine-grey?style=flat-square)
 
-### 🤖 AI & GenAI
-![LLM Integration](https://img.shields.io/badge/LLM_Integration-black?style=flat-square&logo=openai) ![Prompt Engineering](https://img.shields.io/badge/Prompt_Engineering-blue?style=flat-square) ![Agentic Workflows](https://img.shields.io/badge/Agentic_Workflows-white?style=flat-square&logo=replicate)
+### ⚙️ Engineering Fluency
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-CC2927?style=flat-square&logo=mysql&logoColor=white) ![Cloudflare Workers](https://img.shields.io/badge/Cloudflare%20Workers-F38020?style=flat-square&logo=cloudflare&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-181717?style=flat-square&logo=github-actions&logoColor=white) ![REST APIs](https://img.shields.io/badge/REST%20APIs-005571?style=flat-square&logo=fastapi) ![Meta Graph API](https://img.shields.io/badge/Meta%20Graph%20API-1877F2?style=flat-square&logo=meta&logoColor=white) ![Zoho Deluge](https://img.shields.io/badge/Zoho%20Deluge-E42527?style=flat-square&logo=zoho&logoColor=white)
+
+### 📊 Data & Instrumentation
+![PowerBI](https://img.shields.io/badge/Power_BI-F2C811?style=flat-square&logo=powerbi&logoColor=black) ![Metabase](https://img.shields.io/badge/Metabase-509EE3?style=flat-square&logo=metabase&logoColor=white) ![Google Analytics](https://img.shields.io/badge/Google%20Analytics-E37400?style=flat-square&logo=google-analytics&logoColor=white) ![ETL Pipelines](https://img.shields.io/badge/ETL%20Pipelines-green?style=flat-square) ![Attribution Modeling](https://img.shields.io/badge/Attribution%20Modeling-green?style=flat-square)
 
 ---
 
