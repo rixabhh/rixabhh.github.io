@@ -1,0 +1,32 @@
+{
+  "name": "rixabhh-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/react": "^3.6.2",
+    "@astrojs/tailwind": "^5.1.4",
+    "@calcom/embed-react": "latest",
+    "@keystatic/astro": "latest",
+    "@keystatic/core": "latest",
+    "astro": "4.16.19",
+    "framer-motion": "^11.18.2",
+    "geist": "latest",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
+    "autoprefixer": "^10.4.21",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.3"
+  }
+}

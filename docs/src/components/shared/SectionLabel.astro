@@ -1,0 +1,33 @@
+---
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<span class="section-label">{label}</span>
+
+<style>
+  .section-label {
+    position: fixed;
+    top: 50%;
+    left: 1.5rem;
+    color: var(--color-accent);
+    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    opacity: 0.65;
+    pointer-events: none;
+    text-transform: uppercase;
+    transform: rotate(180deg);
+    translate: 0 -50%;
+    writing-mode: vertical-rl;
+  }
+
+  @media (max-width: 768px) {
+    .section-label {
+      display: none;
+    }
+  }
+</style>

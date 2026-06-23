@@ -1,0 +1,122 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@font-face {
+  font-display: swap;
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  src: url('/fonts/Geist-Variable.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  src: url('/fonts/GeistMono-Variable.woff2') format('woff2');
+}
+
+:root {
+  --color-bg: #F5F2ED;
+  --color-bg-secondary: #EDE9E2;
+  --color-surface: #FFFFFF;
+  --color-text-primary: #1A1714;
+  --color-text-secondary: #6B6560;
+  --color-text-tertiary: #9E9891;
+  --color-accent: #C8392B;
+  --color-accent-hover: #A52D21;
+  --color-accent-subtle: #F5E8E6;
+  --color-accent-text: #7A1F17;
+  --color-border: rgba(26, 23, 20, 0.10);
+  --color-border-strong: rgba(26, 23, 20, 0.20);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: 'Geist', system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--color-bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: var(--color-accent-subtle);
+  color: var(--color-accent-text);
+}
+
+.text-display {
+  color: var(--color-text-primary);
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+.text-heading {
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.text-body {
+  color: var(--color-text-secondary);
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.text-mono {
+  color: var(--color-text-tertiary);
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.container-page {
+  width: min(100% - 2rem, 1120px);
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .container-page {
+    width: min(100% - 4rem, 1120px);
+  }
+}
