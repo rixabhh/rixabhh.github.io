@@ -2,22 +2,6 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@font-face {
-  font-display: swap;
-  font-family: 'Geist';
-  font-style: normal;
-  font-weight: 100 900;
-  src: url('/fonts/Geist-Variable.woff2') format('woff2');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'Geist Mono';
-  font-style: normal;
-  font-weight: 100 900;
-  src: url('/fonts/GeistMono-Variable.woff2') format('woff2');
-}
-
 :root {
   --color-bg: #F5F2ED;
   --color-bg-secondary: #EDE9E2;

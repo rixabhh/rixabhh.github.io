@@ -34,6 +34,23 @@ const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta name="twitter:card" content="summary_large_image" />
+    <style is:inline>
+      @font-face {
+        font-display: swap;
+        font-family: 'Geist';
+        font-style: normal;
+        font-weight: 100 900;
+        src: url('/rixabhh/fonts/Geist-Variable.woff2') format('woff2');
+      }
+
+      @font-face {
+        font-display: swap;
+        font-family: 'Geist Mono';
+        font-style: normal;
+        font-weight: 100 900;
+        src: url('/rixabhh/fonts/GeistMono-Variable.woff2') format('woff2');
+      }
+    </style>
     <ViewTransitions />
     {umamiWebsiteId && (
       <script
