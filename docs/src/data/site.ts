@@ -20,11 +20,6 @@ export const metrics = [
     detail: 'WhatsApp Sales Discovery Bot',
   },
   {
-    value: '30%',
-    label: 'Engineering rework reduced',
-    detail: 'Structured technical spec authoring',
-  },
-  {
     value: '95%',
     label: 'CRM data accuracy restored',
     detail: 'Identity resolution layer',
@@ -34,6 +29,11 @@ export const metrics = [
     label: 'Lead capture uplift',
     detail: 'Eshopbox Plus Kiosk Flow',
   },
+  {
+    value: 'v1.0',
+    label: 'Shipped to production',
+    detail: 'Flick AI Desktop Tool',
+  },
 ] as const;
 
 export const workItems = [
@@ -41,74 +41,84 @@ export const workItems = [
     slug: 'whatsapp-sales-bot',
     company: 'EshopBox',
     title: 'WhatsApp Sales Discovery Bot',
-    summary:
-      'End-to-end conversational sales bot on Meta Graph API with Cloudflare Workers and Zoho CRM, automating L1 discovery and routing qualified leads.',
+    summary: '40% of L1 support queries automated before any human involvement.',
     impact: '40% of L1 support queries automated',
-    tags: ['Meta Graph API', 'Cloudflare Workers', 'Zoho CRM', 'Automation'],
+    tags: ['AI Automation', 'EshopBox', 'Shipped'],
   },
   {
     slug: 'identity-resolution',
     company: 'EshopBox',
     title: 'Identity Resolution Layer',
-    summary:
-      'Event schema and identity stitching across touchpoints to fix fragmented CRM records and restore data trust for sales and ops teams.',
+    summary: 'CRM data accuracy restored to 95% across all customer touchpoints.',
     impact: 'CRM accuracy restored to 95%',
-    tags: ['Data Engineering', 'Event Schema', 'CRM', 'ETL'],
+    tags: ['Data Engineering', 'EshopBox', 'Shipped'],
   },
   {
     slug: 'llm-lead-scoring',
     company: 'EshopBox',
     title: 'Multi-Provider LLM Lead Scoring',
-    summary:
-      'Lead qualification pipeline using multi-LLM chains with prompt engineering and fallback routing for reliable scoring at scale.',
+    summary: 'Higher-quality sales pipeline through automated lead qualification at scale.',
     impact: 'Higher-quality pipeline for sales follow-up',
-    tags: ['LLM', 'Prompt Engineering', 'Lead Scoring', 'APIs'],
-  },
-  {
-    slug: 'cx-platform',
-    company: 'Amkette (EvoFox)',
-    title: 'Internal CX Platform',
-    summary:
-      'Product ownership for an internal customer experience platform: specs, sprint planning, and instrumentation for support and success workflows.',
-    impact: 'Unified CX tooling across teams',
-    tags: ['Product Strategy', 'CX', 'Specs', 'Instrumentation'],
-  },
-  {
-    slug: 'cro-automation',
-    company: 'Amkette (EvoFox)',
-    title: 'CRO and Agentic Automation',
-    summary:
-      'Conversion rate optimization strategy paired with agentic automation systems to reduce manual ops and improve funnel performance.',
-    impact: 'Ongoing CRO and automation initiatives',
-    tags: ['CRO', 'Agentic Workflows', 'Automation', 'Analytics'],
+    tags: ['AI', 'Lead Ops', 'EshopBox', 'Shipped'],
   },
   {
     slug: 'kiosk-flow',
     company: 'EshopBox',
     title: 'Eshopbox Plus Kiosk Flow',
-    summary:
-      'Designed and shipped an in-store kiosk lead capture flow, from UX spec through launch and post-launch measurement.',
+    summary: '+25% lead capture uplift from in-store physical touchpoints.',
     impact: '+25% lead capture uplift',
-    tags: ['Product Design', 'Lead Capture', 'Launch', 'A/B Testing'],
+    tags: ['Product Design', 'Lead Capture', 'EshopBox', 'Shipped'],
   },
+  {
+    slug: 'cx-platform',
+    company: 'Amkette (EvoFox)',
+    title: 'Internal CX Platform',
+    summary: 'Built the product layer between a CX team and an external dev shop - from zero requirements to alpha handoff in one build cycle.',
+    impact: 'Unified CX tooling across teams',
+    tags: ['Internal Product', 'B2B SaaS', 'Amkette (EvoFox)', 'Active Alpha'],
+  },
+  {
+    slug: 'flick',
+    company: 'Solo Build',
+    title: 'Flick',
+    summary: 'A system-level AI writing assistant for people who think faster than they type.',
+    impact: 'v1.0.0 shipped',
+    tags: ['AI Desktop Tool', 'Solo Build', 'Shipped'],
+  }
 ] as const;
 
 export const projects = [
   {
-    slug: 'thealgorithm',
-    title: 'TheAlgorithm',
+    slug: 'toolzi',
+    title: 'Toolzi',
     summary:
-      'Solo-built project from zero to production with 126 commits, CI/CD on GitHub Actions, covering architecture, implementation, and deployment.',
-    tags: ['GitHub Actions', 'CI/CD', 'Solo Build'],
-    href: 'https://github.com/rixabhh',
+      '40+ browser-based utility tools, local-first, PWA, TypeScript + React + Vite + Cloudflare Pages, CI/CD via Wrangler.',
+    tags: ['React', 'TypeScript', 'Cloudflare Pages'],
+    href: 'https://github.com/rixabhh/Toolzi',
   },
   {
-    slug: 'spec-authoring',
-    title: 'Technical Spec System',
+    slug: 'flick',
+    title: 'Flick',
     summary:
-      'Structured spec authoring process across 70+ sprint items, reducing engineering rework and aligning product, design, and engineering on scope.',
-    tags: ['PRDs', 'Specs', 'Jira', 'Process'],
-    href: '/work',
+      'A Rust + Tauri v2 desktop app with OS-level keyboard interception for in-place AI text transformation, BYOK via OS keychain, Hindi/Hinglish awareness.',
+    tags: ['Rust', 'Tauri', 'AI Desktop'],
+    href: 'https://github.com/rixabhh/flick',
+  },
+  {
+    slug: 'portfolio',
+    title: 'Portfolio Site',
+    summary:
+      'This website. Built with Astro, TypeScript, and native CSS. Designed to be performant, accessible, and structured.',
+    tags: ['Astro', 'TypeScript', 'CSS'],
+    href: 'https://github.com/rixabhh/rixabhh.github.io',
+  },
+  {
+    slug: 'github-profile',
+    title: 'GitHub Profile',
+    summary:
+      'My public GitHub profile containing open source contributions, configurations, and personal builds.',
+    tags: ['Open Source', 'GitHub'],
+    href: 'https://github.com/rixabhh/rixabhh',
   },
 ] as const;
 

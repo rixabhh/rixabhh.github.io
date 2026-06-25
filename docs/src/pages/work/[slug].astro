@@ -1,0 +1,216 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../components/layout/Layout.astro';
+import PageHeader from '../../components/shared/PageHeader.astro';
+
+export async function getStaticPaths() {
+  const workEntries = await getCollection('work');
+  
+  // Create next/prev links
+  return workEntries.map((entry, index) => {
+    const prev = index > 0 ? workEntries[index - 1] : null;
+    const next = index < workEntries.length - 1 ? workEntries[index + 1] : null;
+    
+    return {
+      params: { slug: entry.slug },
+      props: { entry, prev, next },
+    };
+  });
+}
+
+const { entry, prev, next } = Astro.props;
+const { Content } = await entry.render();
+
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+const withBase = (path: string) => `${basePath}${path === '/' ? '/' : path}`;
+---
+
+<Layout 
+  title={`${entry.data.title} | Rishabh Singh`}
+  description={entry.data.summary}
+>
+  <article class="container-page case-study-page">
+    <div class="case-study-header">
+      <PageHeader 
+        label={entry.data.tags ? entry.data.tags.join(' · ') : 'Case Study'}
+        title={entry.data.title}
+        description={entry.data.summary}
+      />
+      
+      <div class="case-meta">
+        {entry.data.role && (
+          <div class="meta-item">
+            <span class="meta-label text-mono">Role</span>
+            <span class="meta-value">{entry.data.role}</span>
+          </div>
+        )}
+        {entry.data.timeline && (
+          <div class="meta-item">
+            <span class="meta-label text-mono">Timeline</span>
+            <span class="meta-value">{entry.data.timeline}</span>
+          </div>
+        )}
+        {entry.data.status && (
+          <div class="meta-item">
+            <span class="meta-label text-mono">Status</span>
+            <span class="meta-value">{entry.data.status}</span>
+          </div>
+        )}
+      </div>
+    </div>
+
+    <div class="case-study-content markdown-body">
+      <Content />
+    </div>
+
+    <div class="case-study-nav">
+      <div class="nav-prev">
+        {prev && (
+          <a href={withBase(`/work/${prev.slug}`)} class="nav-link">
+            <span class="text-mono">← Previous</span>
+            <span class="nav-title">{prev.data.title}</span>
+          </a>
+        )}
+      </div>
+      <div class="nav-next">
+        {next && (
+          <a href={withBase(`/work/${next.slug}`)} class="nav-link">
+            <span class="text-mono">Next →</span>
+            <span class="nav-title">{next.data.title}</span>
+          </a>
+        )}
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .case-study-page {
+    padding-bottom: 6rem;
+  }
+
+  .case-study-header {
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 3rem;
+  }
+
+  .case-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    margin-top: -1rem; /* overlap slightly with page header bottom padding */
+    padding-bottom: 3rem;
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .meta-label {
+    font-size: 0.65rem;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .meta-value {
+    font-size: 0.95rem;
+    color: var(--color-text-primary);
+    font-weight: 500;
+  }
+
+  /* Markdown body styles */
+  .markdown-body {
+    max-width: 65ch;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .markdown-body :global(h2) {
+    font-family: 'Geist', system-ui, sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 3.5rem 0 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .markdown-body :global(h3) {
+    font-family: 'Geist', system-ui, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 2.5rem 0 1rem;
+  }
+
+  .markdown-body :global(p) {
+    margin-bottom: 1.5rem;
+  }
+
+  .markdown-body :global(ul) {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .markdown-body :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .markdown-body :global(hr) {
+    border: none;
+    border-top: 1px dashed var(--color-border);
+    margin: 3rem 0;
+  }
+
+  .markdown-body :global(em) {
+    color: var(--color-text-tertiary);
+    font-style: italic;
+  }
+
+  /* Case study nav */
+  .case-study-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--color-border);
+    max-width: 65ch;
+    margin-inline: auto;
+  }
+
+  .nav-prev, .nav-next {
+    flex: 1;
+  }
+
+  .nav-next {
+    text-align: right;
+  }
+
+  .nav-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-decoration: none;
+    transition: transform 160ms ease;
+  }
+
+  .nav-link:hover {
+    transform: translateY(-2px);
+  }
+
+  .nav-link .text-mono {
+    font-size: 0.75rem;
+    color: var(--color-accent);
+  }
+
+  .nav-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+</style>
