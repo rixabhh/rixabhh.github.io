@@ -12,14 +12,13 @@ interface Props {
 }
 
 const {
-  title = 'Rishabh Singh | Technical Product Manager',
-  description = 'Technical product manager building AI products, CX platforms, automation systems, and practical tools.',
+  title = 'Rishabh Singh | AI and Technical PM',
+  description = 'Assistant Product Manager at Amkette (EvoFox). Building AI products, CX platforms, automation systems, and practical tools.',
   bodyClass = '',
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(asset('/images/portrait.png'), Astro.site);
-const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
 ---
 
 <!doctype html>
@@ -30,6 +29,7 @@ const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={asset('/favicon.svg')} />
     <link rel="canonical" href={canonicalUrl} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
@@ -56,14 +56,12 @@ const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
       }
     </style>
     <ViewTransitions />
-    {umamiWebsiteId && (
-      <script
-        is:inline
-        defer
-        src="https://cloud.umami.is/script.js"
-        data-website-id={umamiWebsiteId}
-      ></script>
-    )}
+    <script
+      is:inline
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="20cf6c1f-ffe2-4b97-968f-04087a4df6ca"
+    ></script>
   </head>
   <body class={bodyClass}>
     <Nav />

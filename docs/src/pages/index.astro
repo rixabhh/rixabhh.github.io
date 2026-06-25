@@ -4,109 +4,190 @@ import Button from '../components/shared/Button.astro';
 import Portrait from '../components/shared/Portrait.astro';
 import MetricCard from '../components/shared/MetricCard.astro';
 import WorkCard from '../components/shared/WorkCard.astro';
+import MarqueeStrip from '../components/shared/MarqueeStrip.astro';
 import { site, metrics, workItems } from '../data/site';
 ---
 
 <Layout>
-  <section class="container-page hero-shell">
+  <!-- ═══════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════ -->
+  <section class="hero-section container-page">
     <div class="hero-grid">
-      <div class="hero-copy">
-        <p class="text-mono">APM · AI Products · Systems</p>
-        <h1 class="text-display">{site.tagline}</h1>
-        <p class="text-body hero-lead">
-          {site.role}. I work at the intersection of AI, automation, and customer experience —
-          from discovery and specs to shipped systems with measurable impact.
+      <!-- Left: copy -->
+      <div class="hero-copy animate-hero-copy">
+        <p class="hero-eyebrow text-mono">APM · AI Products · Systems</p>
+        <h1 class="hero-headline">
+          {site.tagline}
+        </h1>
+        <p class="hero-lead text-body">
+          {site.role}. I work at the intersection of AI, automation, and
+          customer experience, from discovery and specs to shipped systems
+          with measurable impact.
         </p>
         <div class="hero-actions">
-          <Button href="/work">See my work</Button>
-          <Button href="/contact" variant="secondary">Get in touch</Button>
+          <Button href="/work" variant="pill" id="hero-cta-work">See my work</Button>
+          <Button href="/contact" variant="pill-outline" id="hero-cta-contact">Get in touch</Button>
         </div>
+
+        <!-- Inline status strip -->
+        <p class="hero-status text-mono">
+          <span class="status-dot" aria-hidden="true"></span>
+          Available for APM/PM roles &amp; mentorship bookings
+        </p>
       </div>
-      <div class="hero-visual">
+
+      <!-- Right: portrait -->
+      <div class="hero-visual animate-hero-image">
         <Portrait priority />
       </div>
     </div>
   </section>
 
-  <section class="section-block">
+  <!-- ═══════════════════════════════════════
+       MARQUEE TICKER STRIP
+  ═══════════════════════════════════════ -->
+  <MarqueeStrip />
+
+  <!-- ═══════════════════════════════════════
+       METRICS ROW
+  ═══════════════════════════════════════ -->
+  <section class="section-block metrics-section" aria-label="Key metrics">
     <div class="container-page">
-      <div class="section-heading">
+      <div class="metrics-header section-heading">
         <div class="section-heading-copy">
           <p class="text-mono">Impact</p>
           <h2 class="text-heading">Outcomes that matter</h2>
         </div>
       </div>
-      <div class="grid-metrics">
-        {metrics.map((metric) => (
-          <MetricCard
-            value={metric.value}
-            label={metric.label}
-            detail={metric.detail}
-          />
-        ))}
+      <div class="metrics-row">
+        <MetricCard
+          value={metrics[0].value}
+          label={metrics[0].label}
+          detail={metrics[0].detail}
+        />
+        <MetricCard
+          value={metrics[1].value}
+          label={metrics[1].label}
+          detail={metrics[1].detail}
+          highlight
+        />
+        <MetricCard
+          value={metrics[2].value}
+          label={metrics[2].label}
+          detail={metrics[2].detail}
+        />
+        <MetricCard
+          value={metrics[3].value}
+          label={metrics[3].label}
+          detail={metrics[3].detail}
+        />
       </div>
     </div>
   </section>
 
-  <section class="section-block">
+  <!-- ═══════════════════════════════════════
+       ABOUT
+  ═══════════════════════════════════════ -->
+  <section class="section-block about-section">
     <div class="container-page">
-      <div class="section-heading">
-        <div class="section-heading-copy">
+      <div class="about-layout">
+        <div class="about-left">
           <p class="text-mono">About</p>
-          <h2 class="text-heading">Product at the edge of engineering</h2>
+          <h2 class="text-heading about-headline">
+            Product at the edge of engineering.
+          </h2>
+        </div>
+        <div class="about-right">
+          <p class="text-body about-lead">{site.bio}</p>
+          <div class="about-meta-row">
+            <div class="about-meta-item">
+              <span class="text-mono about-meta-label">Current</span>
+              <span class="about-meta-value">Amkette (EvoFox)</span>
+            </div>
+            <div class="about-meta-item">
+              <span class="text-mono about-meta-label">Education</span>
+              <span class="about-meta-value">{site.education}</span>
+            </div>
+            <div class="about-meta-item">
+              <span class="text-mono about-meta-label">Based in</span>
+              <span class="about-meta-value">India</span>
+            </div>
+          </div>
+          <a
+            href="https://drive.google.com/file/d/1iUQMhulzHFFhTT7vyYKTaEtv5EXFFXSw/view?usp=sharing"
+            target="_blank"
+            rel="noreferrer"
+            class="resume-link text-mono"
+            id="resume-download"
+          >
+            Download Resume ↓
+          </a>
         </div>
       </div>
-      <div class="about-grid">
-        <p class="text-body about-copy">{site.bio}</p>
-        <p class="text-mono about-meta">{site.education}</p>
-      </div>
     </div>
   </section>
 
-  <section class="section-block">
+  <!-- ═══════════════════════════════════════
+       SELECTED WORK
+  ═══════════════════════════════════════ -->
+  <section class="section-block work-section">
     <div class="container-page">
       <div class="section-heading">
         <div class="section-heading-copy">
           <p class="text-mono">Selected work</p>
           <h2 class="text-heading">Case studies from product and ops</h2>
         </div>
-        <Button href="/work" variant="text">View all work</Button>
+        <Button href="/work" variant="text" id="view-all-work">View all work →</Button>
       </div>
-      <div class="grid-work">
-        {workItems.slice(0, 4).map((item) => (
+
+      <div class="work-list" role="list">
+        {workItems.slice(0, 4).map((item, i) => (
           <WorkCard
             company={item.company}
             title={item.title}
             summary={item.summary}
             impact={item.impact}
             tags={item.tags}
+            index={i + 1}
           />
         ))}
       </div>
     </div>
   </section>
 
-  <section class="section-block">
-    <div class="container-page cta-panel">
-      <div>
-        <p class="text-mono">Connect</p>
-        <h2 class="text-heading cta-title">Open to product conversations.</h2>
-        <p class="text-body cta-copy">
-          Whether you're hiring, collaborating, or just want to talk AI products — I'd love to hear from you.
-        </p>
-      </div>
-      <div class="cta-actions">
-        <Button href="/contact">Let's talk</Button>
-        <Button href={`mailto:${site.email}`} variant="secondary">Email me</Button>
+  <!-- ═══════════════════════════════════════
+       CTA PANEL
+  ═══════════════════════════════════════ -->
+  <section class="section-block cta-section">
+    <div class="container-page">
+      <div class="cta-panel">
+        <div class="cta-copy">
+          <p class="text-mono">Connect</p>
+          <h2 class="text-heading cta-headline">Open to product conversations.</h2>
+          <p class="text-body cta-body">
+            Whether you're hiring, collaborating, or just want to talk AI products. I'd love to hear from you.
+          </p>
+          <ul class="open-to-list" aria-label="Open to">
+            <li><span class="open-dot" aria-hidden="true">·</span> APM / PM roles, India and global</li>
+            <li><span class="open-dot" aria-hidden="true">·</span> Freelance product consulting</li>
+            <li><span class="open-dot" aria-hidden="true">·</span> Mentorship for early-career PMs</li>
+          </ul>
+        </div>
+        <div class="cta-actions">
+          <Button href="/contact" variant="pill" id="cta-lets-talk">Let's talk</Button>
+          <Button href={`mailto:${site.email}`} variant="pill-outline" id="cta-email">Email me</Button>
+        </div>
       </div>
     </div>
   </section>
 </Layout>
 
 <style>
-  .hero-shell {
-    display: grid;
+  /* ── Hero ── */
+  .hero-section {
     min-height: calc(100vh - 72px);
+    display: flex;
     align-items: center;
     padding-top: 7rem;
     padding-bottom: 4rem;
@@ -116,26 +197,66 @@ import { site, metrics, workItems } from '../data/site';
     display: grid;
     align-items: center;
     gap: 3rem;
+    width: 100%;
   }
 
   .hero-copy {
-    max-width: 760px;
+    max-width: 700px;
   }
 
-  .hero-copy h1 {
-    margin: 1rem 0 1.5rem;
+  .hero-eyebrow {
+    margin: 0 0 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .hero-headline {
+    font-family: 'Geist', system-ui, sans-serif;
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--color-text-primary);
+    margin: 0 0 1.5rem;
   }
 
   .hero-lead {
-    max-width: 620px;
+    max-width: 560px;
     margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.65;
   }
 
   .hero-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
-    margin-top: 2rem;
+    margin-top: 2.25rem;
+  }
+
+  .hero-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1.75rem 0 0;
+    font-size: 0.68rem;
+    color: var(--color-text-tertiary);
+    letter-spacing: 0.1em;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #22c55e;
+    flex-shrink: 0;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.3); }
   }
 
   .hero-visual {
@@ -143,60 +264,245 @@ import { site, metrics, workItems } from '../data/site';
     margin-inline: auto;
   }
 
-  .about-grid {
-    display: grid;
-    gap: 1.5rem;
-    max-width: 42rem;
+  /* Hero entrance animations */
+  .animate-hero-copy {
+    animation: fadeUp 0.6s ease both;
+    animation-delay: 200ms;
   }
 
-  .about-copy {
+  .animate-hero-image {
+    animation: scaleIn 0.6s ease both;
+    animation-delay: 400ms;
+  }
+
+  /* ── Metrics ── */
+  .metrics-section {
+    padding-bottom: 0;
+  }
+
+  .metrics-header {
+    margin-bottom: 2rem;
+  }
+
+  .metrics-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+
+  .metrics-row > :global(*) {
+    border-radius: 0 !important;
+    border: none !important;
+    border-right: 1px solid var(--color-border) !important;
+    border-bottom: 1px solid var(--color-border) !important;
+  }
+
+  .metrics-row > :global(*:nth-child(2n)) {
+    border-right: none !important;
+  }
+
+  .metrics-row > :global(*:nth-last-child(-n+2)) {
+    border-bottom: none !important;
+  }
+
+  /* ── About ── */
+  .about-layout {
+    display: grid;
+    gap: 2.5rem;
+  }
+
+  .about-headline {
+    margin-top: 0.75rem;
+    max-width: 22rem;
+  }
+
+  .about-lead {
     margin: 0;
     font-size: 1.05rem;
   }
 
-  .about-meta {
-    margin: 0;
+  .about-meta-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
   }
 
+  .about-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .about-meta-label {
+    display: block;
+    font-size: 0.65rem;
+    color: var(--color-accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-family: 'Geist Mono', ui-monospace, monospace;
+  }
+
+  .about-meta-value {
+    font-size: 0.95rem;
+    color: var(--color-text-primary);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .resume-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 1.5rem;
+    color: var(--color-accent);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 160ms ease, text-decoration-color 160ms ease;
+  }
+
+  .resume-link:hover {
+    color: var(--color-accent-hover);
+  }
+
+  /* ── Work ── */
+  .work-list {
+    margin-top: 1rem;
+  }
+
+  /* ── CTA Panel ── */
   .cta-panel {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 2rem;
+    gap: 2.5rem;
     border: 1px solid var(--color-border);
-    border-radius: 1rem;
+    border-radius: 1.25rem;
     background: var(--color-surface);
-    padding: 2.5rem;
+    padding: 3rem 3.5rem;
     flex-wrap: wrap;
+    position: relative;
+    overflow: hidden;
   }
 
-  .cta-title {
+  /* Subtle accent corner decoration */
+  .cta-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--color-accent), transparent);
+  }
+
+  .cta-headline {
     margin-top: 0.75rem;
     max-width: 28rem;
   }
 
-  .cta-copy {
+  .cta-body {
     margin-top: 1rem;
     max-width: 32rem;
   }
 
+  .open-to-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.25rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .open-to-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+  }
+
+  .open-dot {
+    color: var(--color-accent);
+    font-size: 1.25rem;
+    line-height: 1;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
   .cta-actions {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  /* ── Responsive ── */
+  @media (min-width: 768px) {
+    .about-meta-row {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   @media (min-width: 960px) {
     .hero-grid {
-      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
-      gap: 4rem;
+      grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+      gap: 5rem;
     }
 
     .hero-visual {
       width: 100%;
-      max-width: 24rem;
+      max-width: 22rem;
       margin-inline: 0 0;
       justify-self: end;
+    }
+
+    .about-layout {
+      grid-template-columns: 1fr 1.6fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .metrics-row {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .metrics-row > :global(*:nth-child(2n)) {
+      border-right: 1px solid var(--color-border) !important;
+    }
+
+    .metrics-row > :global(*:nth-last-child(-n+2)) {
+      border-bottom: none !important;
+    }
+
+    .metrics-row > :global(*:last-child) {
+      border-right: none !important;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .about-meta-row {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .cta-panel {
+      padding: 2rem 1.75rem;
+    }
+
+    .cta-actions {
+      width: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
     }
   }
 </style>

@@ -1,9 +1,10 @@
 ---
 const navItems = [
-  { href: '/work', label: 'Work' },
+  { href: '/work',     label: 'Work' },
   { href: '/projects', label: 'Projects' },
-  { href: '/uses', label: 'Uses' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/writing',  label: 'Writing', soon: true },
+  { href: '/uses',     label: 'Uses' },
+  { href: '/contact',  label: 'Contact' },
 ];
 
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -35,7 +36,11 @@ const isHome = pathname === '/';
     <div class="desktop-links" aria-label="Primary navigation">
       {navItems.map((item) => {
         const active = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href);
-        return (
+        return item.soon ? (
+          <span class="nav-link nav-soon" title="Coming soon" aria-label={`${item.label}, coming soon`}>
+            {item.label}
+          </span>
+        ) : (
           <a class:list={['nav-link', { active }]} href={withBase(item.href)}>
             {item.label}
           </a>
@@ -51,7 +56,11 @@ const isHome = pathname === '/';
       </button>
       {navItems.map((item) => {
         const active = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href);
-        return (
+        return item.soon ? (
+          <span class:list={['mobile-link', 'mobile-link-soon']}>
+            {item.label} <small>soon</small>
+          </span>
+        ) : (
           <a class:list={['mobile-link', { active }]} href={withBase(item.href)}>
             {item.label}
           </a>
@@ -162,6 +171,14 @@ const isHome = pathname === '/';
     transition: color 160ms ease;
   }
 
+  .nav-soon {
+    color: var(--color-text-tertiary);
+    font-size: 0.9rem;
+    cursor: default;
+    opacity: 0.55;
+    user-select: none;
+  }
+
   .nav-link:hover,
   .nav-link.active {
     color: var(--color-text-primary);
@@ -247,6 +264,26 @@ const isHome = pathname === '/';
 
   .mobile-link.active {
     color: var(--color-accent);
+  }
+
+  .mobile-link-soon {
+    color: var(--color-text-tertiary);
+    font-size: clamp(2rem, 13vw, 4.5rem);
+    font-weight: 650;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+    opacity: 0.4;
+    cursor: default;
+    user-select: none;
+  }
+
+  .mobile-link-soon small {
+    font-size: 0.5em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-left: 0.5rem;
+    font-family: 'Geist Mono', monospace;
   }
 
   :global(.menu-open) {

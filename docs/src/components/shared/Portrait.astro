@@ -10,41 +10,55 @@ const { class: className = '', priority = false } = Astro.props;
 const src = asset('/images/portrait.png');
 ---
 
-<div class:list={['portrait-frame', className]}>
-  <img
-    src={src}
-    alt="Professional portrait of Rishabh Singh wearing a dark suit and tie"
-    width={640}
-    height={640}
-    loading={priority ? 'eager' : 'lazy'}
-    decoding="async"
-    fetchpriority={priority ? 'high' : 'auto'}
-  />
+<div class:list={['portrait-wrap', className]}>
+  <div class="portrait-frame">
+    <img
+      src={src}
+      alt="Professional portrait of Rishabh Singh"
+      width={640}
+      height={640}
+      loading={priority ? 'eager' : 'lazy'}
+      decoding="async"
+      fetchpriority={priority ? 'high' : 'auto'}
+    />
+  </div>
+  <!-- Decorative geometric asterisk overlay -->
+  <svg class="deco-asterisk" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <line x1="60" y1="10" x2="60" y2="110" stroke="#C8392B" stroke-width="4" stroke-linecap="round"/>
+    <line x1="10" y1="60" x2="110" y2="60" stroke="#C8392B" stroke-width="4" stroke-linecap="round"/>
+    <line x1="25" y1="25" x2="95" y2="95" stroke="#C8392B" stroke-width="4" stroke-linecap="round"/>
+    <line x1="95" y1="25" x2="25" y2="95" stroke="#C8392B" stroke-width="4" stroke-linecap="round"/>
+  </svg>
+  <!-- Corner accent marks -->
+  <span class="corner-mark corner-tl" aria-hidden="true"></span>
+  <span class="corner-mark corner-br" aria-hidden="true"></span>
 </div>
 
 <style>
+  .portrait-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 22rem;
+    margin-inline: auto;
+  }
+
   .portrait-frame {
     position: relative;
     overflow: hidden;
-    border: 1px solid var(--color-border);
-    border-radius: 1rem;
+    border-radius: 50%;
     background: var(--color-bg-secondary);
     aspect-ratio: 1;
+    border: 3px solid var(--color-border-strong);
     box-shadow:
-      0 1px 2px rgba(26, 23, 20, 0.04),
-      0 12px 40px rgba(26, 23, 20, 0.08);
+      0 2px 4px rgba(26, 23, 20, 0.06),
+      0 16px 48px rgba(26, 23, 20, 0.12);
+    transition: box-shadow 300ms ease;
   }
 
-  .portrait-frame::after {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      180deg,
-      transparent 70%,
-      color-mix(in srgb, var(--color-bg) 18%, transparent) 100%
-    );
-    content: '';
-    pointer-events: none;
+  .portrait-frame:hover {
+    box-shadow:
+      0 4px 8px rgba(26, 23, 20, 0.08),
+      0 24px 64px rgba(26, 23, 20, 0.15);
   }
 
   .portrait-frame img {
@@ -52,5 +66,51 @@ const src = asset('/images/portrait.png');
     height: 100%;
     object-fit: cover;
     object-position: center top;
+    filter: sepia(0.08) contrast(1.04) brightness(0.98);
+    transition: transform 400ms ease;
+  }
+
+  .portrait-frame:hover img {
+    transform: scale(1.03);
+  }
+
+  /* Decorative asterisk - positioned top-right outside the circle */
+  .deco-asterisk {
+    position: absolute;
+    top: -1.5rem;
+    right: -2rem;
+    width: 5rem;
+    height: 5rem;
+    opacity: 0.85;
+    animation: spin-slow 20s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  /* Corner accent marks */
+  .corner-mark {
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .corner-tl {
+    top: 0.5rem;
+    left: 0.5rem;
+    border-top: 2px solid var(--color-accent);
+    border-left: 2px solid var(--color-accent);
+  }
+
+  .corner-br {
+    bottom: 0.5rem;
+    right: 0.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    border-right: 2px solid var(--color-accent);
   }
 </style>

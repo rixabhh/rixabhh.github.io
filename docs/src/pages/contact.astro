@@ -1,127 +1,334 @@
 ---
 import Layout from '../components/layout/Layout.astro';
 import PageHeader from '../components/shared/PageHeader.astro';
-import Button from '../components/shared/Button.astro';
 import { site } from '../data/site';
 
 const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
-const calUsername = import.meta.env.PUBLIC_CAL_USERNAME;
 ---
 
-<Layout title="Contact | Rishabh Singh" description="Get in touch for product roles, collaborations, or AI product conversations.">
+<Layout
+  title="Contact | Rishabh Singh"
+  description="Get in touch for product roles, collaborations, mentorship, or consulting."
+>
   <section class="container-page page-shell">
     <PageHeader
       label="Contact"
       title="Let's talk."
-      description="Open to product conversations, collaborations, and roles at the intersection of AI and systems."
+      description="Open to APM and PM roles across India and globally. Available for freelance product consulting and early-career mentorship."
     />
 
     <div class="contact-grid">
-      <div class="contact-panel">
-        <h2 class="contact-panel-title">Direct</h2>
-        <div class="contact-links">
-          <a class="contact-link" href={`mailto:${site.email}`}>
-            <span class="text-mono">Email</span>
-            <span>{site.email}</span>
-          </a>
-          <a class="contact-link" href={site.links.linkedin} rel="noreferrer" target="_blank">
-            <span class="text-mono">LinkedIn</span>
-            <span>linkedin.com/in/rishabbh</span>
-          </a>
-          <a class="contact-link" href={site.links.x} rel="noreferrer" target="_blank">
-            <span class="text-mono">X</span>
-            <span>@rixabhh</span>
-          </a>
-          <a class="contact-link" href={site.links.github} rel="noreferrer" target="_blank">
-            <span class="text-mono">GitHub</span>
-            <span>github.com/rixabhh</span>
+      <!-- ── Left column ── -->
+      <div class="contact-left">
+
+        <!-- Open to -->
+        <div class="open-to-block">
+          <p class="block-eyebrow text-mono">Open to</p>
+          <ul class="open-to-list" aria-label="What I'm open to">
+            <li>
+              <span class="open-dot" aria-hidden="true">·</span>
+              <div>
+                <strong>APM / PM roles</strong>
+                <span class="open-sub">India and global</span>
+              </div>
+            </li>
+            <li>
+              <span class="open-dot" aria-hidden="true">·</span>
+              <div>
+                <strong>Freelance product consulting</strong>
+                <span class="open-sub">Scoped engagements</span>
+              </div>
+            </li>
+            <li>
+              <span class="open-dot" aria-hidden="true">·</span>
+              <div>
+                <strong>Mentorship</strong>
+                <span class="open-sub">Early-career PMs and CS students</span>
+              </div>
+            </li>
+          </ul>
+          <a
+            href="https://drive.google.com/file/d/1iUQMhulzHFFhTT7vyYKTaEtv5EXFFXSw/view?usp=sharing"
+            target="_blank"
+            rel="noreferrer"
+            class="resume-link text-mono"
+            id="contact-resume-download"
+          >
+            Download Resume ↓
           </a>
         </div>
-        <div class="contact-actions">
-          <Button href={`mailto:${site.email}`}>Send an email</Button>
+
+        <!-- Direct links -->
+        <div class="direct-links-block">
+          <p class="block-eyebrow text-mono">Direct</p>
+          <div class="contact-links">
+            <a class="contact-link" href={`mailto:${site.email}`} id="contact-email-link">
+              <span class="text-mono link-label">Email</span>
+              <span class="link-value">{site.email}</span>
+            </a>
+            <a class="contact-link" href={site.links.linkedin} rel="noreferrer" target="_blank" id="contact-linkedin-link">
+              <span class="text-mono link-label">LinkedIn</span>
+              <span class="link-value">linkedin.com/in/rishabbh</span>
+            </a>
+            <a class="contact-link" href={site.links.x} rel="noreferrer" target="_blank" id="contact-x-link">
+              <span class="text-mono link-label">X / Twitter</span>
+              <span class="link-value">@rixabhh</span>
+            </a>
+            <a class="contact-link" href={site.links.github} rel="noreferrer" target="_blank" id="contact-github-link">
+              <span class="text-mono link-label">GitHub</span>
+              <span class="link-value">github.com/rixabhh</span>
+            </a>
+          </div>
         </div>
-      </div>
 
-      {web3formsKey ? (
-        <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
-          <input type="hidden" name="access_key" value={web3formsKey} />
-          <input type="hidden" name="subject" value="Portfolio contact — Rishabh Singh" />
-          <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
+        <!-- Contact form -->
+        <div class="form-block">
+          <p class="block-eyebrow text-mono">Send a message</p>
+          {web3formsKey ? (
+            <form
+              class="contact-form"
+              action="https://api.web3forms.com/submit"
+              method="POST"
+              id="contact-form"
+            >
+              <input type="hidden" name="access_key" value={web3formsKey} />
+              <input type="hidden" name="subject" value="Portfolio contact: Rishabh Singh" />
+              <input type="hidden" name="from_name" value="Portfolio Contact Form" />
+              <input type="checkbox" name="botcheck" class="hidden-field" tabindex="-1" autocomplete="off" />
 
-          <div class="field">
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" required autocomplete="name" />
-          </div>
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" required autocomplete="email" />
-          </div>
-          <div class="field">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-          </div>
-          <button class="submit-button" type="submit">Send message</button>
-        </form>
-      ) : (
-        <div class="contact-panel contact-note">
-          <h2 class="contact-panel-title">Message</h2>
-          <p class="text-body">
-            Prefer email? Drop me a note at{' '}
-            <a href={`mailto:${site.email}`}>{site.email}</a> — I typically respond within a couple of days.
+              <div class="field">
+                <label for="contact-name">Name</label>
+                <input id="contact-name" name="name" type="text" required autocomplete="name" placeholder="Your name" />
+              </div>
+              <div class="field">
+                <label for="contact-email">Email</label>
+                <input id="contact-email" name="email" type="email" required autocomplete="email" placeholder="your@email.com" />
+              </div>
+              <div class="field">
+                <label for="contact-type">I'm looking for</label>
+                <select id="contact-type" name="type" required>
+                  <option value="">Select one...</option>
+                  <option value="job">Job opportunity</option>
+                  <option value="consulting">Consulting</option>
+                  <option value="mentorship">Mentorship</option>
+                  <option value="other">Something else</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" name="message" rows="4" required placeholder="What's on your mind?"></textarea>
+              </div>
+              <button class="submit-button" type="submit" id="contact-submit">
+                Send →
+              </button>
+            </form>
+          ) : (
+            <div class="form-fallback">
+              <p class="text-body">
+                Drop me a note at{' '}
+                <a href={`mailto:${site.email}`}>{site.email}</a>
+                {' '}I typically respond within a couple of days.
+              </p>
+            </div>
+          )}
+        </div>
+
+        <!-- Mentorship block -->
+        <div class="mentorship-block">
+          <p class="block-eyebrow text-mono">Mentorship</p>
+          <h2 class="mentorship-title">Work with me.</h2>
+          <p class="text-body mentorship-body">
+            I work with CS students and early-career professionals breaking into
+            product, AI, analytics, or consulting. Roadmap clarity, portfolio
+            review, job search strategy, mock interviews, or just figuring out
+            what to do next. Intro call is free.
           </p>
+          <a href="#cal-embed-section" class="mentorship-cta text-mono" id="mentorship-book-cta">
+            Book a 30-min intro call →
+          </a>
         </div>
-      )}
-    </div>
-
-    {calUsername && (
-      <div class="cal-embed">
-        <h2 class="text-heading cal-title">Book a call</h2>
-        <div id="cal-embed" data-cal-username={calUsername}></div>
       </div>
-    )}
+
+      <!-- ── Right column: Cal.com embed ── -->
+      <div class="contact-right">
+        <div class="cal-card" id="cal-embed-section">
+          <p class="block-eyebrow text-mono">Schedule</p>
+          <h2 class="cal-title">Book a call</h2>
+          <p class="text-body cal-sub">30-min intro · Free · Video call</p>
+          <div id="my-cal-inline-connect" class="cal-embed-container"></div>
+        </div>
+      </div>
+    </div>
   </section>
 </Layout>
 
-{calUsername && (
-  <script define:vars={{ calUsername }}>
-    import('@calcom/embed-react').then(({ getCalApi }) => {
-      getCalApi({ namespace: 'portfolio' }).then((cal) => {
-        cal('ui', {
-          theme: 'light',
-          cssVarsPerTheme: {
-            light: { 'cal-brand': '#C8392B' },
-            dark: { 'cal-brand': '#C8392B' },
-          },
+<!-- Cal.com embed script -->
+<script is:inline>
+(function (C, A, L) {
+  let p = function (a, ar) { a.q.push(ar); };
+  let d = C.document;
+  C.Cal = C.Cal || function () {
+    let cal = C.Cal; let ar = arguments;
+    if (!cal.loaded) {
+      cal.ns = {}; cal.q = cal.q || [];
+      d.head.appendChild(d.createElement("script")).src = A;
+      cal.loaded = true;
+    }
+    if (ar[0] === L) {
+      const api = function () { p(api, arguments); };
+      const namespace = ar[1];
+      api.q = api.q || [];
+      if (typeof namespace === "string") {
+        cal.ns[namespace] = cal.ns[namespace] || api;
+        p(cal.ns[namespace], ar);
+        p(cal, ["initNamespace", namespace]);
+      } else p(cal, ar);
+      return;
+    }
+    p(cal, ar);
+  };
+})(window, "https://app.cal.com/embed/embed.js", "init");
+
+Cal("init", "connect", { origin: "https://app.cal.com" });
+Cal.config = Cal.config || {};
+Cal.config.forwardQueryParams = true;
+
+Cal.ns.connect("inline", {
+  elementOrSelector: "#my-cal-inline-connect",
+  config: {
+    layout: "month_view",
+    useSlotsViewOnSmallScreen: "true",
+    theme: "light",
+  },
+  calLink: "rixabhh/connect",
+});
+
+Cal.ns.connect("ui", {
+  hideEventTypeDetails: true,
+  layout: "month_view",
+  styles: {
+    branding: { brandColor: "#C8392B" },
+  },
+});
+</script>
+
+<!-- Form success/error handling -->
+<script is:inline>
+  const form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('contact-submit');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: new FormData(form),
         });
-        cal('inline', {
-          elementOrSelector: '#cal-embed',
-          calLink: `${calUsername}/30min`,
-        });
-      });
+        if (res.ok) {
+          btn.textContent = 'Sent ✓';
+          btn.style.background = '#16a34a';
+          form.reset();
+          setTimeout(() => {
+            btn.textContent = 'Send →';
+            btn.style.background = '';
+            btn.disabled = false;
+          }, 3000);
+        } else {
+          throw new Error('failed');
+        }
+      } catch {
+        btn.textContent = 'Failed. Try emailing directly instead';
+        btn.disabled = false;
+      }
     });
-  </script>
-)}
+  }
+</script>
 
 <style>
+  /* ── Grid layout ── */
   .contact-grid {
     display: grid;
-    gap: 1.5rem;
-    margin-top: 3rem;
+    gap: 3rem;
+    margin-top: 3.5rem;
   }
 
-  .contact-panel,
-  .contact-form {
-    border: 1px solid var(--color-border);
-    border-radius: 0.75rem;
-    background: var(--color-surface);
-    padding: 1.75rem;
+  /* ── Shared block style ── */
+  .block-eyebrow {
+    margin: 0 0 1rem;
+    color: var(--color-accent);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
   }
 
-  .contact-panel-title {
-    color: var(--color-text-primary);
-    font-size: 1.05rem;
+  /* ── Open to ── */
+  .open-to-block {
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .open-to-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .open-to-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .open-dot {
+    color: var(--color-accent);
+    font-size: 1.5rem;
+    line-height: 1;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: -0.15rem;
+  }
+
+  .open-to-list li strong {
+    display: block;
+    font-size: 0.95rem;
     font-weight: 600;
-    margin: 0 0 1.25rem;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+  }
+
+  .open-sub {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--color-text-tertiary);
+    margin-top: 0.15rem;
+  }
+
+  .resume-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--color-accent);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 160ms ease;
+  }
+
+  .resume-link:hover {
+    color: var(--color-accent-hover);
+  }
+
+  /* ── Direct links ── */
+  .direct-links-block {
+    padding-block: 2.5rem;
+    border-bottom: 1px solid var(--color-border);
   }
 
   .contact-links {
@@ -131,113 +338,221 @@ const calUsername = import.meta.env.PUBLIC_CAL_USERNAME;
 
   .contact-link {
     display: grid;
-    gap: 0.25rem;
+    grid-template-columns: 5rem 1fr;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-border);
     transition: color 160ms ease;
+  }
+
+  .contact-link:last-child {
+    border-bottom: none;
   }
 
   .contact-link:hover {
     color: var(--color-accent);
   }
 
-  .contact-link span:last-child {
-    color: var(--color-text-secondary);
-    font-size: 0.95rem;
+  .link-label {
+    color: var(--color-text-tertiary);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
   }
 
-  .contact-link:hover span:last-child {
+  .link-value {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    transition: color 160ms ease;
+  }
+
+  .contact-link:hover .link-value {
     color: var(--color-accent);
   }
 
-  .contact-actions {
-    margin-top: 1.5rem;
+  /* ── Form ── */
+  .form-block {
+    padding-block: 2.5rem;
+    border-bottom: 1px solid var(--color-border);
   }
 
   .contact-form {
     display: grid;
-    gap: 1rem;
+    gap: 1.1rem;
   }
 
   .field {
     display: grid;
-    gap: 0.45rem;
+    gap: 0.5rem;
   }
 
   .field label {
     color: var(--color-text-tertiary);
     font-family: 'Geist Mono', ui-monospace, monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.08em;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
   }
 
   .field input,
+  .field select,
   .field textarea {
     width: 100%;
     border: 1px solid var(--color-border);
     border-radius: 0.5rem;
     background: var(--color-bg);
     color: var(--color-text-primary);
-    padding: 0.75rem 0.85rem;
+    padding: 0.75rem 0.9rem;
+    font-size: 0.95rem;
     resize: vertical;
-    transition: border-color 160ms ease;
+    transition:
+      border-color 160ms ease,
+      box-shadow 160ms ease;
+    appearance: none;
   }
 
   .field input:focus,
+  .field select:focus,
   .field textarea:focus {
-    border-color: var(--color-border-strong);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-accent-subtle);
     outline: none;
   }
 
-  .hidden {
+  .hidden-field {
     display: none;
-  }
-
-  .contact-note p {
-    margin: 0;
-  }
-
-  .contact-note a {
-    color: var(--color-accent);
-  }
-
-  .cal-embed {
-    margin-top: 3rem;
-    padding-top: 3rem;
-    border-top: 1px solid var(--color-border);
-  }
-
-  .cal-title {
-    margin-bottom: 1.5rem;
-  }
-
-  #cal-embed {
-    min-height: 32rem;
   }
 
   .submit-button {
     display: inline-flex;
-    min-height: 2.75rem;
     align-items: center;
     justify-content: center;
+    min-height: 2.75rem;
     border: none;
-    border-radius: 0.5rem;
+    border-radius: 999px;
     background: var(--color-accent);
     color: #fff;
     cursor: pointer;
     font-size: 0.9rem;
-    font-weight: 500;
-    padding: 0.75rem 1.25rem;
-    transition: background-color 160ms ease;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    padding: 0.75rem 2rem;
+    transition:
+      background-color 160ms ease,
+      transform 160ms ease,
+      box-shadow 160ms ease;
+    box-shadow: 0 1px 3px rgba(200, 57, 43, 0.25);
+    align-self: start;
   }
 
-  .submit-button:hover {
+  .submit-button:hover:not(:disabled) {
     background: var(--color-accent-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(200, 57, 43, 0.3);
   }
 
+  .submit-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .form-fallback {
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background: var(--color-bg-secondary);
+  }
+
+  .form-fallback p { margin: 0; }
+
+  .form-fallback a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* ── Mentorship ── */
+  .mentorship-block {
+    padding-top: 2.5rem;
+  }
+
+  .mentorship-title {
+    font-family: 'Geist', system-ui, sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--color-text-primary);
+    margin: 0 0 1rem;
+  }
+
+  .mentorship-body {
+    margin: 0;
+    max-width: 38rem;
+  }
+
+  .mentorship-cta {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 1.25rem;
+    color: var(--color-accent);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 160ms ease;
+  }
+
+  .mentorship-cta:hover {
+    color: var(--color-accent-hover);
+  }
+
+  /* ── Cal card ── */
+  .contact-right {
+    position: relative;
+  }
+
+  .cal-card {
+    position: sticky;
+    top: 6rem;
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    background: var(--color-surface);
+    padding: 2rem;
+    overflow: hidden;
+  }
+
+  .cal-title {
+    font-family: 'Geist', system-ui, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--color-text-primary);
+    margin: 0 0 0.4rem;
+  }
+
+  .cal-sub {
+    margin: 0 0 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .cal-embed-container {
+    min-height: 36rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  /* ── Responsive ── */
   @media (min-width: 900px) {
     .contact-grid {
-      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       align-items: start;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .contact-link {
+      grid-template-columns: 4rem 1fr;
     }
   }
 </style>

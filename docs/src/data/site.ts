@@ -1,10 +1,10 @@
 export const site = {
   name: 'Rishabh Singh',
-  title: 'Technical Product Manager',
+  title: 'AI and Technical PM',
   tagline: 'I build AI products and the systems that make them work.',
   role: 'Assistant Product Manager at Amkette (EvoFox)',
-  bio: 'I sit at the intersection of product strategy and engineering execution — owning discovery, spec authoring, cross-functional delivery, and instrumentation. Currently at Amkette (EvoFox), I lead CRO strategy, internal CX platform development, and AI automation systems.',
-  education: 'B.Tech CSE (Data Science) at SIET · graduating 2027',
+  bio: 'I sit at the intersection of product strategy and engineering execution, owning discovery, spec authoring, cross-functional delivery, and instrumentation. Currently at Amkette (EvoFox), I lead CRO strategy, internal CX platform development, and AI automation systems.',
+  education: 'B.Tech CSE (Data Science) at SIET, graduating 2027',
   email: 'pro.rishabhsingh@gmail.com',
   links: {
     linkedin: 'https://linkedin.com/in/rishabbh',
@@ -42,7 +42,7 @@ export const workItems = [
     company: 'EshopBox',
     title: 'WhatsApp Sales Discovery Bot',
     summary:
-      'End-to-end conversational sales bot on Meta Graph API with Cloudflare Workers and Zoho CRM — automating L1 discovery and routing qualified leads.',
+      'End-to-end conversational sales bot on Meta Graph API with Cloudflare Workers and Zoho CRM, automating L1 discovery and routing qualified leads.',
     impact: '40% of L1 support queries automated',
     tags: ['Meta Graph API', 'Cloudflare Workers', 'Zoho CRM', 'Automation'],
   },
@@ -69,14 +69,14 @@ export const workItems = [
     company: 'Amkette (EvoFox)',
     title: 'Internal CX Platform',
     summary:
-      'Product ownership for an internal customer experience platform — specs, sprint planning, and instrumentation for support and success workflows.',
+      'Product ownership for an internal customer experience platform: specs, sprint planning, and instrumentation for support and success workflows.',
     impact: 'Unified CX tooling across teams',
     tags: ['Product Strategy', 'CX', 'Specs', 'Instrumentation'],
   },
   {
     slug: 'cro-automation',
     company: 'Amkette (EvoFox)',
-    title: 'CRO & Agentic Automation',
+    title: 'CRO and Agentic Automation',
     summary:
       'Conversion rate optimization strategy paired with agentic automation systems to reduce manual ops and improve funnel performance.',
     impact: 'Ongoing CRO and automation initiatives',
@@ -87,7 +87,7 @@ export const workItems = [
     company: 'EshopBox',
     title: 'Eshopbox Plus Kiosk Flow',
     summary:
-      'Designed and shipped an in-store kiosk lead capture flow — from UX spec through launch and post-launch measurement.',
+      'Designed and shipped an in-store kiosk lead capture flow, from UX spec through launch and post-launch measurement.',
     impact: '+25% lead capture uplift',
     tags: ['Product Design', 'Lead Capture', 'Launch', 'A/B Testing'],
   },
@@ -98,7 +98,7 @@ export const projects = [
     slug: 'thealgorithm',
     title: 'TheAlgorithm',
     summary:
-      'Solo-built project from zero to production — 126 commits with CI/CD on GitHub Actions, covering architecture, implementation, and deployment.',
+      'Solo-built project from zero to production with 126 commits, CI/CD on GitHub Actions, covering architecture, implementation, and deployment.',
     tags: ['GitHub Actions', 'CI/CD', 'Solo Build'],
     href: 'https://github.com/rixabhh',
   },
@@ -106,7 +106,7 @@ export const projects = [
     slug: 'spec-authoring',
     title: 'Technical Spec System',
     summary:
-      'Structured spec authoring process across 70+ sprint items — reducing engineering rework and aligning product, design, and engineering on scope.',
+      'Structured spec authoring process across 70+ sprint items, reducing engineering rework and aligning product, design, and engineering on scope.',
     tags: ['PRDs', 'Specs', 'Jira', 'Process'],
     href: '/work',
   },
@@ -114,29 +114,29 @@ export const projects = [
 
 export const usesCategories = [
   {
-    title: 'Product & Strategy',
+    title: 'Product and Strategy',
     items: [
-      'Roadmapping & prioritization',
-      'PRD & technical spec authoring',
-      'Jira & GitHub Projects',
+      'Roadmapping and prioritization',
+      'PRD and technical spec authoring',
+      'Jira and GitHub Projects',
       'Notion',
-      'A/B testing & experimentation',
+      'A/B testing and experimentation',
     ],
   },
   {
-    title: 'AI, LLM & Automation',
+    title: 'AI, LLM and Automation',
     items: [
       'Multi-LLM chains',
       'Prompt engineering',
       'Agentic workflows',
       'RAG pipelines',
-      'Webhook & state machine design',
+      'Webhook and state machine design',
     ],
   },
   {
     title: 'Engineering',
     items: [
-      'Python & SQL',
+      'Python and SQL',
       'Cloudflare Workers',
       'Docker',
       'GitHub Actions',
@@ -146,7 +146,7 @@ export const usesCategories = [
     ],
   },
   {
-    title: 'Data & Instrumentation',
+    title: 'Data and Instrumentation',
     items: [
       'Power BI',
       'Metabase',

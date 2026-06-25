@@ -1,0 +1,75 @@
+---
+// MarqueeStrip.astro - Scrolling ticker strip (pure CSS, no JS)
+const items = [
+  'Product Strategy',
+  'AI Systems',
+  'CX Platforms',
+  'Automation',
+  'Discovery',
+  'Technical Specs',
+  'Delivery',
+  'LLM Pipelines',
+  'Data Engineering',
+  'Lead Scoring',
+  'CRO',
+  'Agentic Workflows',
+];
+---
+
+<div class="marquee-outer" aria-hidden="true">
+  <div class="marquee-track">
+    {items.map((item) => (
+      <span class="marquee-item">
+        {item}
+        <span class="marquee-dot">✦</span>
+      </span>
+    ))}
+    {/* Duplicate for seamless loop */}
+    {items.map((item) => (
+      <span class="marquee-item" aria-hidden="true">
+        {item}
+        <span class="marquee-dot">✦</span>
+      </span>
+    ))}
+  </div>
+</div>
+
+<style>
+  .marquee-outer {
+    overflow: hidden;
+    background: var(--color-text-primary);
+    padding: 0.875rem 0;
+    width: 100%;
+    user-select: none;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 28s linear infinite;
+    gap: 0;
+  }
+
+  .marquee-outer:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  .marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 0 1.25rem;
+    color: #fff;
+    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .marquee-dot {
+    color: var(--color-accent);
+    font-size: 0.55rem;
+  }
+</style>
