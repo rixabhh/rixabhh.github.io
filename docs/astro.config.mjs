@@ -7,7 +7,7 @@ const isStaticBuild = process.env.npm_lifecycle_event === 'build';
 
 export default defineConfig({
   site: 'https://rixabhh.github.io',
-  base: '/rixabhh',
+  base: '/',
   output: 'static',
   integrations: [
     react(),
