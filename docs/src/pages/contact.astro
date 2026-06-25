@@ -133,24 +133,21 @@ const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
           )}
         </div>
 
+      </div>
+
+      <!-- ── Right column: Mentorship & Cal embed ── -->
+      <div class="contact-right">
         <!-- Mentorship block -->
         <div class="mentorship-block">
           <p class="block-eyebrow text-mono">Mentorship</p>
-          <h2 class="mentorship-title">Work with me.</h2>
+          <h2 class="mentorship-title">Career guidance.</h2>
           <p class="text-body mentorship-body">
             I work with CS students and early-career professionals breaking into
             product, AI, analytics, or consulting. Roadmap clarity, portfolio
             review, job search strategy, mock interviews, or just figuring out
             what to do next. Intro call is free.
           </p>
-          <a href="#cal-embed-section" class="mentorship-cta text-mono" id="mentorship-book-cta">
-            Book a 30-min intro call →
-          </a>
         </div>
-      </div>
-
-      <!-- ── Right column: Cal.com embed ── -->
-      <div class="contact-right">
         <div class="cal-card" id="cal-embed-section">
           <p class="block-eyebrow text-mono">Schedule</p>
           <h2 class="cal-title">Book a call</h2>
@@ -473,7 +470,7 @@ Cal.ns.connect("ui", {
 
   /* ── Mentorship ── */
   .mentorship-block {
-    padding-top: 2.5rem;
+    margin-bottom: 2.5rem;
   }
 
   .mentorship-title {
