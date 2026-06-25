@@ -2,6 +2,7 @@
 import { ViewTransitions } from 'astro:transitions';
 import Nav from './Nav.astro';
 import Footer from './Footer.astro';
+import { asset } from '../../lib/paths';
 import '../../styles/global.css';
 
 interface Props {
@@ -17,6 +18,7 @@ const {
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(asset('/images/portrait.png'), Astro.site);
 const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
 ---
 
@@ -33,7 +35,9 @@ const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
     <style is:inline>
       @font-face {
         font-display: swap;

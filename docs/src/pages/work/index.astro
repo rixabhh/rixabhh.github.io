@@ -1,23 +1,36 @@
 ---
 import Layout from '../../components/layout/Layout.astro';
 import SectionLabel from '../../components/shared/SectionLabel.astro';
+import PageHeader from '../../components/shared/PageHeader.astro';
+import WorkCard from '../../components/shared/WorkCard.astro';
+import { workItems } from '../../data/site';
 ---
 
-<Layout title="Work | Rishabh Singh">
+<Layout title="Work | Rishabh Singh" description="Selected product work — AI automation, CX platforms, CRM systems, and conversion optimization.">
   <SectionLabel label="work" />
   <section class="container-page page-shell">
-    <p class="text-mono">Case studies</p>
-    <h1 class="text-heading">Selected product work</h1>
+    <PageHeader
+      label="Case studies"
+      title="Selected product work"
+      description="Product ownership across AI automation, data systems, and customer experience — from spec to shipped impact."
+    />
+
+    <div class="grid-work work-list">
+      {workItems.map((item) => (
+        <WorkCard
+          company={item.company}
+          title={item.title}
+          summary={item.summary}
+          impact={item.impact}
+          tags={item.tags}
+        />
+      ))}
+    </div>
   </section>
 </Layout>
 
 <style>
-  .page-shell {
-    padding-top: 9rem;
-    min-height: 60vh;
-  }
-
-  .page-shell h1 {
-    margin-top: 1rem;
+  .work-list {
+    margin-top: 3rem;
   }
 </style>

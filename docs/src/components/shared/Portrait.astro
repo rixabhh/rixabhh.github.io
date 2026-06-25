@@ -1,0 +1,56 @@
+---
+import { asset } from '../../lib/paths';
+
+interface Props {
+  class?: string;
+  priority?: boolean;
+}
+
+const { class: className = '', priority = false } = Astro.props;
+const src = asset('/images/portrait.png');
+---
+
+<div class:list={['portrait-frame', className]}>
+  <img
+    src={src}
+    alt="Professional portrait of Rishabh Singh wearing a dark suit and tie"
+    width={640}
+    height={640}
+    loading={priority ? 'eager' : 'lazy'}
+    decoding="async"
+    fetchpriority={priority ? 'high' : 'auto'}
+  />
+</div>
+
+<style>
+  .portrait-frame {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    background: var(--color-bg-secondary);
+    aspect-ratio: 1;
+    box-shadow:
+      0 1px 2px rgba(26, 23, 20, 0.04),
+      0 12px 40px rgba(26, 23, 20, 0.08);
+  }
+
+  .portrait-frame::after {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      transparent 70%,
+      color-mix(in srgb, var(--color-bg) 18%, transparent) 100%
+    );
+    content: '';
+    pointer-events: none;
+  }
+
+  .portrait-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+</style>

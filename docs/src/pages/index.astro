@@ -1,20 +1,103 @@
 ---
 import Layout from '../components/layout/Layout.astro';
 import Button from '../components/shared/Button.astro';
+import Portrait from '../components/shared/Portrait.astro';
+import MetricCard from '../components/shared/MetricCard.astro';
+import WorkCard from '../components/shared/WorkCard.astro';
+import { site, metrics, workItems } from '../data/site';
 ---
 
 <Layout>
   <section class="container-page hero-shell">
-    <div class="hero-copy">
-      <p class="text-mono">APM · AI Products · Systems</p>
-      <h1 class="text-display">I build AI products and the systems that make them work.</h1>
-      <p class="text-body">
-        Assistant Product Manager at Amkette (EvoFox). I work at the intersection of AI,
-        automation, and customer experience.
-      </p>
-      <div class="hero-actions">
-        <Button href="/work">See my work</Button>
-        <Button href="/contact" variant="secondary">Book a call</Button>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="text-mono">APM · AI Products · Systems</p>
+        <h1 class="text-display">{site.tagline}</h1>
+        <p class="text-body hero-lead">
+          {site.role}. I work at the intersection of AI, automation, and customer experience —
+          from discovery and specs to shipped systems with measurable impact.
+        </p>
+        <div class="hero-actions">
+          <Button href="/work">See my work</Button>
+          <Button href="/contact" variant="secondary">Get in touch</Button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <Portrait priority />
+      </div>
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="container-page">
+      <div class="section-heading">
+        <div class="section-heading-copy">
+          <p class="text-mono">Impact</p>
+          <h2 class="text-heading">Outcomes that matter</h2>
+        </div>
+      </div>
+      <div class="grid-metrics">
+        {metrics.map((metric) => (
+          <MetricCard
+            value={metric.value}
+            label={metric.label}
+            detail={metric.detail}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="container-page">
+      <div class="section-heading">
+        <div class="section-heading-copy">
+          <p class="text-mono">About</p>
+          <h2 class="text-heading">Product at the edge of engineering</h2>
+        </div>
+      </div>
+      <div class="about-grid">
+        <p class="text-body about-copy">{site.bio}</p>
+        <p class="text-mono about-meta">{site.education}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="container-page">
+      <div class="section-heading">
+        <div class="section-heading-copy">
+          <p class="text-mono">Selected work</p>
+          <h2 class="text-heading">Case studies from product and ops</h2>
+        </div>
+        <Button href="/work" variant="text">View all work</Button>
+      </div>
+      <div class="grid-work">
+        {workItems.slice(0, 4).map((item) => (
+          <WorkCard
+            company={item.company}
+            title={item.title}
+            summary={item.summary}
+            impact={item.impact}
+            tags={item.tags}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="container-page cta-panel">
+      <div>
+        <p class="text-mono">Connect</p>
+        <h2 class="text-heading cta-title">Open to product conversations.</h2>
+        <p class="text-body cta-copy">
+          Whether you're hiring, collaborating, or just want to talk AI products — I'd love to hear from you.
+        </p>
+      </div>
+      <div class="cta-actions">
+        <Button href="/contact">Let's talk</Button>
+        <Button href={`mailto:${site.email}`} variant="secondary">Email me</Button>
       </div>
     </div>
   </section>
@@ -23,9 +106,16 @@ import Button from '../components/shared/Button.astro';
 <style>
   .hero-shell {
     display: grid;
-    min-height: 88vh;
+    min-height: calc(100vh - 72px);
     align-items: center;
     padding-top: 7rem;
+    padding-bottom: 4rem;
+  }
+
+  .hero-grid {
+    display: grid;
+    align-items: center;
+    gap: 3rem;
   }
 
   .hero-copy {
@@ -36,8 +126,9 @@ import Button from '../components/shared/Button.astro';
     margin: 1rem 0 1.5rem;
   }
 
-  .hero-copy p:last-of-type {
+  .hero-lead {
     max-width: 620px;
+    margin: 0;
   }
 
   .hero-actions {
@@ -45,5 +136,67 @@ import Button from '../components/shared/Button.astro';
     flex-wrap: wrap;
     gap: 0.75rem;
     margin-top: 2rem;
+  }
+
+  .hero-visual {
+    width: min(100%, 22rem);
+    margin-inline: auto;
+  }
+
+  .about-grid {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 42rem;
+  }
+
+  .about-copy {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+
+  .about-meta {
+    margin: 0;
+  }
+
+  .cta-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    background: var(--color-surface);
+    padding: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .cta-title {
+    margin-top: 0.75rem;
+    max-width: 28rem;
+  }
+
+  .cta-copy {
+    margin-top: 1rem;
+    max-width: 32rem;
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 960px) {
+    .hero-grid {
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      gap: 4rem;
+    }
+
+    .hero-visual {
+      width: 100%;
+      max-width: 24rem;
+      margin-inline: 0 0;
+      justify-self: end;
+    }
   }
 </style>

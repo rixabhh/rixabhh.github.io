@@ -1,21 +1,243 @@
 ---
 import Layout from '../components/layout/Layout.astro';
+import PageHeader from '../components/shared/PageHeader.astro';
+import Button from '../components/shared/Button.astro';
+import { site } from '../data/site';
+
+const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
+const calUsername = import.meta.env.PUBLIC_CAL_USERNAME;
 ---
 
-<Layout title="Contact | Rishabh Singh">
+<Layout title="Contact | Rishabh Singh" description="Get in touch for product roles, collaborations, or AI product conversations.">
   <section class="container-page page-shell">
-    <p class="text-mono">Contact</p>
-    <h1 class="text-heading">Let's talk.</h1>
+    <PageHeader
+      label="Contact"
+      title="Let's talk."
+      description="Open to product conversations, collaborations, and roles at the intersection of AI and systems."
+    />
+
+    <div class="contact-grid">
+      <div class="contact-panel">
+        <h2 class="contact-panel-title">Direct</h2>
+        <div class="contact-links">
+          <a class="contact-link" href={`mailto:${site.email}`}>
+            <span class="text-mono">Email</span>
+            <span>{site.email}</span>
+          </a>
+          <a class="contact-link" href={site.links.linkedin} rel="noreferrer" target="_blank">
+            <span class="text-mono">LinkedIn</span>
+            <span>linkedin.com/in/rishabbh</span>
+          </a>
+          <a class="contact-link" href={site.links.x} rel="noreferrer" target="_blank">
+            <span class="text-mono">X</span>
+            <span>@rixabhh</span>
+          </a>
+          <a class="contact-link" href={site.links.github} rel="noreferrer" target="_blank">
+            <span class="text-mono">GitHub</span>
+            <span>github.com/rixabhh</span>
+          </a>
+        </div>
+        <div class="contact-actions">
+          <Button href={`mailto:${site.email}`}>Send an email</Button>
+        </div>
+      </div>
+
+      {web3formsKey ? (
+        <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value={web3formsKey} />
+          <input type="hidden" name="subject" value="Portfolio contact — Rishabh Singh" />
+          <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
+
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required autocomplete="email" />
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button class="submit-button" type="submit">Send message</button>
+        </form>
+      ) : (
+        <div class="contact-panel contact-note">
+          <h2 class="contact-panel-title">Message</h2>
+          <p class="text-body">
+            Prefer email? Drop me a note at{' '}
+            <a href={`mailto:${site.email}`}>{site.email}</a> — I typically respond within a couple of days.
+          </p>
+        </div>
+      )}
+    </div>
+
+    {calUsername && (
+      <div class="cal-embed">
+        <h2 class="text-heading cal-title">Book a call</h2>
+        <div id="cal-embed" data-cal-username={calUsername}></div>
+      </div>
+    )}
   </section>
 </Layout>
 
+{calUsername && (
+  <script define:vars={{ calUsername }}>
+    import('@calcom/embed-react').then(({ getCalApi }) => {
+      getCalApi({ namespace: 'portfolio' }).then((cal) => {
+        cal('ui', {
+          theme: 'light',
+          cssVarsPerTheme: {
+            light: { 'cal-brand': '#C8392B' },
+            dark: { 'cal-brand': '#C8392B' },
+          },
+        });
+        cal('inline', {
+          elementOrSelector: '#cal-embed',
+          calLink: `${calUsername}/30min`,
+        });
+      });
+    });
+  </script>
+)}
+
 <style>
-  .page-shell {
-    padding-top: 9rem;
-    min-height: 60vh;
+  .contact-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 3rem;
   }
 
-  .page-shell h1 {
-    margin-top: 1rem;
+  .contact-panel,
+  .contact-form {
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background: var(--color-surface);
+    padding: 1.75rem;
+  }
+
+  .contact-panel-title {
+    color: var(--color-text-primary);
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0 0 1.25rem;
+  }
+
+  .contact-links {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .contact-link {
+    display: grid;
+    gap: 0.25rem;
+    transition: color 160ms ease;
+  }
+
+  .contact-link:hover {
+    color: var(--color-accent);
+  }
+
+  .contact-link span:last-child {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+  }
+
+  .contact-link:hover span:last-child {
+    color: var(--color-accent);
+  }
+
+  .contact-actions {
+    margin-top: 1.5rem;
+  }
+
+  .contact-form {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .field {
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  .field label {
+    color: var(--color-text-tertiary);
+    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .field input,
+  .field textarea {
+    width: 100%;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    background: var(--color-bg);
+    color: var(--color-text-primary);
+    padding: 0.75rem 0.85rem;
+    resize: vertical;
+    transition: border-color 160ms ease;
+  }
+
+  .field input:focus,
+  .field textarea:focus {
+    border-color: var(--color-border-strong);
+    outline: none;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .contact-note p {
+    margin: 0;
+  }
+
+  .contact-note a {
+    color: var(--color-accent);
+  }
+
+  .cal-embed {
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .cal-title {
+    margin-bottom: 1.5rem;
+  }
+
+  #cal-embed {
+    min-height: 32rem;
+  }
+
+  .submit-button {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--color-accent);
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.75rem 1.25rem;
+    transition: background-color 160ms ease;
+  }
+
+  .submit-button:hover {
+    background: var(--color-accent-hover);
+  }
+
+  @media (min-width: 900px) {
+    .contact-grid {
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      align-items: start;
+    }
   }
 </style>

@@ -1,0 +1,86 @@
+---
+import Tag from './Tag.astro';
+import { withBase } from '../../lib/paths';
+
+interface Props {
+  title: string;
+  summary: string;
+  tags?: readonly string[];
+  href?: string;
+}
+
+const { title, summary, tags = [], href } = Astro.props;
+const resolvedHref = href?.startsWith('/') ? withBase(href) : href;
+const TagName = resolvedHref ? 'a' : 'article';
+---
+
+<TagName class="project-card" href={resolvedHref} {...(resolvedHref ? { target: href?.startsWith('http') ? '_blank' : undefined, rel: href?.startsWith('http') ? 'noreferrer' : undefined } : {})}>
+  <h3 class="project-title">
+    {title}
+    {resolvedHref && <span class="project-arrow" aria-hidden="true">↗</span>}
+  </h3>
+  <p class="text-body project-summary">{summary}</p>
+  {tags.length > 0 && (
+    <div class="project-tags">
+      {tags.map((tag) => (
+        <Tag>{tag}</Tag>
+      ))}
+    </div>
+  )}
+</TagName>
+
+<style>
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background: var(--color-surface);
+    padding: 1.75rem;
+    text-decoration: none;
+    transition:
+      border-color 180ms ease,
+      transform 180ms ease;
+  }
+
+  a.project-card:hover {
+    border-color: color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+    transform: translateY(-2px);
+  }
+
+  .project-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    color: var(--color-text-primary);
+    font-family: 'Geist', system-ui, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .project-arrow {
+    color: var(--color-accent);
+    font-size: 1rem;
+    transition: transform 160ms ease;
+  }
+
+  a.project-card:hover .project-arrow {
+    transform: translate(2px, -2px);
+  }
+
+  .project-summary {
+    margin: 0;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+  }
+</style>

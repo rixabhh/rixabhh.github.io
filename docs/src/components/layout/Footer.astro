@@ -1,10 +1,15 @@
+---
+import { site } from '../../data/site';
+---
+
 <footer class="site-footer">
   <div class="container-page footer-inner">
-    <p>Rishabh Singh</p>
+    <p>{site.name} · {site.title}</p>
     <div class="footer-links" aria-label="External links">
-      <a href="mailto:pro.rishabhsingh@gmail.com">Email</a>
-      <a href="https://linkedin.com/in/rishabbh" rel="noreferrer" target="_blank">LinkedIn</a>
-      <a href="https://x.com/rixabhh" rel="noreferrer" target="_blank">X</a>
+      <a href={`mailto:${site.email}`}>Email</a>
+      <a href={site.links.linkedin} rel="noreferrer" target="_blank">LinkedIn</a>
+      <a href={site.links.x} rel="noreferrer" target="_blank">X</a>
+      <a href={site.links.github} rel="noreferrer" target="_blank">GitHub</a>
     </div>
   </div>
 </footer>

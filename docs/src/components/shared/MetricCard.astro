@@ -1,0 +1,61 @@
+---
+interface Props {
+  value: string;
+  label: string;
+  detail?: string;
+}
+
+const { value, label, detail } = Astro.props;
+---
+
+<article class="metric-card">
+  <p class="metric-value">{value}</p>
+  <p class="metric-label">{label}</p>
+  {detail && <p class="metric-detail">{detail}</p>}
+</article>
+
+<style>
+  .metric-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background: var(--color-surface);
+    padding: 1.5rem;
+    transition:
+      border-color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .metric-card:hover {
+    border-color: var(--color-border-strong);
+    transform: translateY(-2px);
+  }
+
+  .metric-value {
+    color: var(--color-accent);
+    font-family: 'Geist', system-ui, sans-serif;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .metric-label {
+    color: var(--color-text-primary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .metric-detail {
+    color: var(--color-text-tertiary);
+    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    line-height: 1.5;
+    margin-top: 0.25rem;
+    text-transform: uppercase;
+  }
+</style>
