@@ -5,6 +5,7 @@ import Portrait from '../components/shared/Portrait.astro';
 import MetricCard from '../components/shared/MetricCard.astro';
 import WorkCard from '../components/shared/WorkCard.astro';
 import MarqueeStrip from '../components/shared/MarqueeStrip.astro';
+import Icon from '../components/shared/Icon.astro';
 import { site, metrics, workItems } from '../data/site';
 ---
 
@@ -102,15 +103,15 @@ import { site, metrics, workItems } from '../data/site';
           <p class="text-body about-lead">{site.bio}</p>
           <div class="about-meta-row">
             <div class="about-meta-item">
-              <span class="text-mono about-meta-label">Current</span>
+              <span class="text-mono about-meta-label"><Icon name="briefcase" size={13} /> Current</span>
               <span class="about-meta-value">Amkette (EvoFox)</span>
             </div>
             <div class="about-meta-item">
-              <span class="text-mono about-meta-label">Education</span>
+              <span class="text-mono about-meta-label"><Icon name="graduation-cap" size={13} /> Education</span>
               <span class="about-meta-value">{site.education}</span>
             </div>
             <div class="about-meta-item">
-              <span class="text-mono about-meta-label">Based in</span>
+              <span class="text-mono about-meta-label"><Icon name="map-pin" size={13} /> Based in</span>
               <span class="about-meta-value">India</span>
             </div>
           </div>
@@ -121,7 +122,7 @@ import { site, metrics, workItems } from '../data/site';
             class="resume-link text-mono"
             id="resume-download"
           >
-            Download Resume ↓
+            <Icon name="download" size={12} /> Download Resume
           </a>
         </div>
       </div>
@@ -138,7 +139,7 @@ import { site, metrics, workItems } from '../data/site';
           <p class="text-mono">Selected work</p>
           <h2 class="text-heading">Case studies from product and ops</h2>
         </div>
-        <Button href="/work" variant="text" id="view-all-work">View all work →</Button>
+        <Button href="/work" variant="text" id="view-all-work">View all work <Icon name="arrow-right" size={14} /></Button>
       </div>
 
       <div class="work-list" role="list">
@@ -170,9 +171,9 @@ import { site, metrics, workItems } from '../data/site';
             Whether you're hiring, collaborating, or just want to talk AI products. I'd love to hear from you.
           </p>
           <ul class="open-to-list" aria-label="Open to">
-            <li><span class="open-dot" aria-hidden="true">·</span> APM / PM roles, India and global</li>
-            <li><span class="open-dot" aria-hidden="true">·</span> Freelance product consulting</li>
-            <li><span class="open-dot" aria-hidden="true">·</span> Mentorship for early-career PMs</li>
+            <li><Icon name="briefcase" size={14} class:list={['open-icon']} /> APM / PM roles, India and global</li>
+            <li><Icon name="users" size={14} class:list={['open-icon']} /> Freelance product consulting</li>
+            <li><Icon name="graduation-cap" size={14} class:list={['open-icon']} /> Mentorship for early-career PMs</li>
           </ul>
         </div>
         <div class="cta-actions">
@@ -188,6 +189,7 @@ import { site, metrics, workItems } from '../data/site';
   /* ── Hero ── */
   .hero-section {
     min-height: calc(100vh - 72px);
+    min-height: calc(100dvh - 72px);
     display: flex;
     align-items: center;
     padding-top: 7rem;
@@ -265,6 +267,12 @@ import { site, metrics, workItems } from '../data/site';
     margin-inline: auto;
   }
 
+  @media (max-width: 480px) {
+    .hero-visual {
+      width: 16rem;
+    }
+  }
+
   /* Hero entrance animations */
   .animate-hero-copy {
     animation: fadeUp 0.6s ease both;
@@ -340,7 +348,9 @@ import { site, metrics, workItems } from '../data/site';
   }
 
   .about-meta-label {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
     font-size: 0.65rem;
     color: var(--color-accent);
     letter-spacing: 0.1em;
@@ -390,7 +400,6 @@ import { site, metrics, workItems } from '../data/site';
     padding: 3rem 3.5rem;
     flex-wrap: wrap;
     position: relative;
-    overflow: hidden;
   }
 
   /* Subtle accent corner decoration */
@@ -401,7 +410,9 @@ import { site, metrics, workItems } from '../data/site';
     left: 0;
     width: 4px;
     height: 100%;
+    border-radius: 1.25rem 0 0 1.25rem;
     background: linear-gradient(to bottom, var(--color-accent), transparent);
+    pointer-events: none;
   }
 
   .cta-headline {
@@ -426,17 +437,14 @@ import { site, metrics, workItems } from '../data/site';
   .open-to-list li {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.625rem;
     font-size: 0.95rem;
     color: var(--color-text-secondary);
     line-height: 1.4;
   }
 
-  .open-dot {
+  .open-icon {
     color: var(--color-accent);
-    font-size: 1.25rem;
-    line-height: 1;
-    font-weight: 700;
     flex-shrink: 0;
   }
 
@@ -448,12 +456,6 @@ import { site, metrics, workItems } from '../data/site';
   }
 
   /* ── Responsive ── */
-  @media (min-width: 768px) {
-    .about-meta-row {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
   @media (min-width: 960px) {
     .hero-grid {
       grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
@@ -479,12 +481,9 @@ import { site, metrics, workItems } from '../data/site';
       grid-template-columns: repeat(4, 1fr);
     }
 
-    .metrics-row > :global(*:nth-child(2n)) {
-      border-right: 1px solid var(--color-border) !important;
-    }
-
-    .metrics-row > :global(*:nth-last-child(-n+2)) {
+    .metrics-row > :global(*) {
       border-bottom: none !important;
+      border-right: 1px solid var(--color-border) !important;
     }
 
     .metrics-row > :global(*:last-child) {
@@ -493,6 +492,19 @@ import { site, metrics, workItems } from '../data/site';
   }
 
   @media (max-width: 600px) {
+    .hero-section {
+      padding-top: 5rem;
+      padding-bottom: 2.5rem;
+    }
+
+    .hero-headline {
+      font-size: clamp(2.25rem, 8vw, 3rem);
+    }
+
+    .hero-actions {
+      margin-top: 1.75rem;
+    }
+
     .about-meta-row {
       grid-template-columns: 1fr;
       gap: 1rem;
@@ -500,6 +512,10 @@ import { site, metrics, workItems } from '../data/site';
 
     .cta-panel {
       padding: 2rem 1.75rem;
+    }
+
+    .cta-headline {
+      max-width: 100%;
     }
 
     .cta-actions {

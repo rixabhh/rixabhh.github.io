@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../components/layout/Layout.astro';
 import PageHeader from '../../components/shared/PageHeader.astro';
+import Icon from '../../components/shared/Icon.astro';
 
 export async function getStaticPaths() {
   const workEntries = await getCollection('work');
@@ -67,7 +68,7 @@ const withBase = (path: string) => `${basePath}${path === '/' ? '/' : path}`;
       <div class="nav-prev">
         {prev && (
           <a href={withBase(`/work/${prev.slug}`)} class="nav-link">
-            <span class="text-mono">← Previous</span>
+            <span class="text-mono nav-direction"><Icon name="arrow-right" size={14} class="nav-arrow-flip" /> Previous</span>
             <span class="nav-title">{prev.data.title}</span>
           </a>
         )}
@@ -75,7 +76,7 @@ const withBase = (path: string) => `${basePath}${path === '/' ? '/' : path}`;
       <div class="nav-next">
         {next && (
           <a href={withBase(`/work/${next.slug}`)} class="nav-link">
-            <span class="text-mono">Next →</span>
+            <span class="text-mono nav-direction">Next <Icon name="arrow-right" size={14} /></span>
             <span class="nav-title">{next.data.title}</span>
           </a>
         )}
@@ -87,6 +88,17 @@ const withBase = (path: string) => `${basePath}${path === '/' ? '/' : path}`;
 <style>
   .case-study-page {
     padding-bottom: 6rem;
+  }
+
+  @media (max-width: 600px) {
+    .case-study-page {
+      padding-bottom: 4rem;
+    }
+
+    .case-meta {
+      gap: 1rem;
+      padding-bottom: 2rem;
+    }
   }
 
   .case-study-header {
@@ -128,6 +140,23 @@ const withBase = (path: string) => `${basePath}${path === '/' ? '/' : path}`;
     font-size: 1.1rem;
     line-height: 1.6;
     color: var(--color-text-secondary);
+  }
+
+  @media (max-width: 600px) {
+    .markdown-body {
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .markdown-body :global(h2) {
+      font-size: 1.4rem;
+      margin: 2.5rem 0 1rem;
+    }
+
+    .markdown-body :global(h3) {
+      font-size: 1.1rem;
+      margin: 2rem 0 0.75rem;
+    }
   }
 
   .markdown-body :global(h2) {
@@ -183,6 +212,19 @@ const withBase = (path: string) => `${basePath}${path === '/' ? '/' : path}`;
     margin-inline: auto;
   }
 
+  @media (max-width: 600px) {
+    .case-study-nav {
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+    }
+
+    .nav-next {
+      text-align: left;
+    }
+  }
+
   .nav-prev, .nav-next {
     flex: 1;
   }
@@ -206,6 +248,16 @@ const withBase = (path: string) => `${basePath}${path === '/' ? '/' : path}`;
   .nav-link .text-mono {
     font-size: 0.75rem;
     color: var(--color-accent);
+  }
+
+  .nav-direction {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .nav-arrow-flip {
+    transform: rotate(180deg);
   }
 
   .nav-title {

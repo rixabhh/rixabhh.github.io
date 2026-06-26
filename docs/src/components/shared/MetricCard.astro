@@ -30,6 +30,12 @@ const { value, label, detail, highlight = false } = Astro.props;
     position: relative;
   }
 
+  @media (max-width: 600px) {
+    .metric-card {
+      padding: 1.5rem 1.25rem;
+    }
+  }
+
   .metric-card::after {
     content: '';
     position: absolute;

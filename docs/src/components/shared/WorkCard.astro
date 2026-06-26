@@ -1,5 +1,6 @@
 ---
 import Tag from './Tag.astro';
+import Icon from './Icon.astro';
 
 interface Props {
   company: string;
@@ -7,7 +8,7 @@ interface Props {
   summary: string;
   impact?: string;
   tags?: readonly string[];
-  index?: number; // 1-based for display number
+  index?: number;
   href?: string;
 }
 
@@ -33,7 +34,7 @@ const num = index ? String(index).padStart(2, '0') : undefined;
     </div>
     <div class="work-right">
       {impact && <p class="work-impact">{impact}</p>}
-      <span class="work-arrow" aria-hidden="true">→</span>
+      <span class="work-arrow" aria-hidden="true"><Icon name="arrow-right" size={18} /></span>
     </div>
   </a>
 </article>
@@ -73,6 +74,7 @@ const num = index ? String(index).padStart(2, '0') : undefined;
     transform: scaleY(0);
     transform-origin: bottom;
     transition: transform 220ms ease;
+    pointer-events: none;
   }
 
   .work-row:hover .work-row-link {
@@ -95,18 +97,15 @@ const num = index ? String(index).padStart(2, '0') : undefined;
     font-size: clamp(1.75rem, 3vw, 2.25rem);
     font-weight: 700;
     letter-spacing: -0.04em;
-    color: var(--color-bg-secondary);
     line-height: 1;
-    text-shadow: 0 0 0 1px var(--color-border);
     user-select: none;
-    /* Show border around the ghost number */
     -webkit-text-stroke: 1px var(--color-border-strong);
     color: transparent;
+    transition: -webkit-text-stroke-color 200ms ease;
   }
 
   .work-row:hover .work-num {
     -webkit-text-stroke-color: var(--color-accent);
-    transition: -webkit-text-stroke-color 200ms ease;
   }
 
   /* Center column */
@@ -165,19 +164,27 @@ const num = index ? String(index).padStart(2, '0') : undefined;
 
   .work-arrow {
     color: var(--color-text-tertiary);
-    font-size: 1.1rem;
-    font-weight: 400;
+    display: flex;
+    align-items: center;
     transition:
       transform 180ms ease,
       color 180ms ease;
-    display: block;
   }
 
   /* Mobile: stack layout */
   @media (max-width: 600px) {
+    .work-row {
+      overflow: hidden;
+    }
+
     .work-row-link {
       grid-template-columns: 2.5rem 1fr;
       grid-template-rows: auto auto;
+      padding: 1.25rem 0.5rem;
+    }
+
+    .work-row:hover .work-row-link {
+      padding-left: 0.75rem;
     }
 
     .work-right {

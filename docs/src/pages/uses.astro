@@ -1,7 +1,15 @@
 ---
 import Layout from '../components/layout/Layout.astro';
 import PageHeader from '../components/shared/PageHeader.astro';
+import Icon from '../components/shared/Icon.astro';
 import { usesCategories } from '../data/site';
+
+const categoryIcons: Record<string, string> = {
+  'Product and Strategy': 'briefcase',
+  'AI, LLM and Automation': 'zap',
+  'Engineering': 'code',
+  'Data and Instrumentation': 'bar-chart',
+};
 ---
 
 <Layout title="Uses | Rishabh Singh" description="Tools, stack, and workflows for product management, AI systems, and engineering.">
@@ -15,7 +23,10 @@ import { usesCategories } from '../data/site';
     <div class="grid-uses uses-list">
       {usesCategories.map((category) => (
         <section class="uses-card">
-          <h2 class="uses-title">{category.title}</h2>
+          <h2 class="uses-title">
+            {categoryIcons[category.title] && <Icon name={categoryIcons[category.title]} size={16} class="uses-icon" />}
+            {category.title}
+          </h2>
           <ul class="uses-items">
             {category.items.map((item) => (
               <li>{item}</li>
@@ -40,12 +51,19 @@ import { usesCategories } from '../data/site';
   }
 
   .uses-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     color: var(--color-text-primary);
     font-family: 'Geist', system-ui, sans-serif;
     font-size: 1.05rem;
     font-weight: 600;
     letter-spacing: -0.01em;
     margin: 0 0 1rem;
+  }
+
+  .uses-icon {
+    color: var(--color-accent);
   }
 
   .uses-items {

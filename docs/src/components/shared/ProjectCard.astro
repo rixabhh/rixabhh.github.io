@@ -1,5 +1,6 @@
 ---
 import Tag from './Tag.astro';
+import Icon from './Icon.astro';
 import { withBase } from '../../lib/paths';
 
 interface Props {
@@ -17,7 +18,7 @@ const TagName = resolvedHref ? 'a' : 'article';
 <TagName class="project-card" href={resolvedHref} {...(resolvedHref ? { target: href?.startsWith('http') ? '_blank' : undefined, rel: href?.startsWith('http') ? 'noreferrer' : undefined } : {})}>
   <h3 class="project-title">
     {title}
-    {resolvedHref && <span class="project-arrow" aria-hidden="true">↗</span>}
+    {resolvedHref && <span class="project-arrow" aria-hidden="true"><Icon name="arrow-up-right" size={16} /></span>}
   </h3>
   <p class="text-body project-summary">{summary}</p>
   {tags.length > 0 && (
@@ -65,7 +66,8 @@ const TagName = resolvedHref ? 'a' : 'article';
 
   .project-arrow {
     color: var(--color-accent);
-    font-size: 1rem;
+    display: flex;
+    align-items: center;
     transition: transform 160ms ease;
   }
 

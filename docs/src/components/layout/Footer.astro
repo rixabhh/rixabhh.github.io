@@ -1,15 +1,16 @@
 ---
 import { site } from '../../data/site';
+import Icon from '../shared/Icon.astro';
 ---
 
 <footer class="site-footer">
   <div class="container-page footer-inner">
     <p>{site.name} · {site.title}</p>
     <div class="footer-links" aria-label="External links">
-      <a href={`mailto:${site.email}`}>Email</a>
-      <a href={site.links.linkedin} rel="noreferrer" target="_blank">LinkedIn</a>
-      <a href={site.links.x} rel="noreferrer" target="_blank">X</a>
-      <a href={site.links.github} rel="noreferrer" target="_blank">GitHub</a>
+      <a href={`mailto:${site.email}`}><Icon name="mail" size={14} /> Email</a>
+      <a href={site.links.linkedin} rel="noreferrer" target="_blank"><Icon name="linkedin" size={14} /> LinkedIn</a>
+      <a href={site.links.x} rel="noreferrer" target="_blank"><Icon name="x" size={14} /> X</a>
+      <a href={site.links.github} rel="noreferrer" target="_blank"><Icon name="github" size={14} /> GitHub</a>
     </div>
   </div>
 </footer>
@@ -18,7 +19,7 @@ import { site } from '../../data/site';
   .site-footer {
     border-top: 1px solid var(--color-border);
     margin-top: 6rem;
-    padding: 2rem 0;
+    padding: 2rem 0 calc(2rem + env(safe-area-inset-bottom, 0));
   }
 
   .footer-inner {
@@ -41,6 +42,11 @@ import { site } from '../../data/site';
   }
 
   .footer-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 2.5rem;
+    padding: 0.25rem 0;
     transition: color 160ms ease;
   }
 

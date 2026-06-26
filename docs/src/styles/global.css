@@ -37,6 +37,17 @@
   to   { opacity: 1; transform: scale(1); }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -48,12 +59,16 @@ html {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
   min-height: 100vh;
+  min-height: 100dvh;
   margin: 0;
   background: var(--color-bg);
+  padding-bottom: env(safe-area-inset-bottom, 0);
 }
 
 a {
@@ -73,6 +88,13 @@ input,
 select,
 textarea {
   font: inherit;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 0.25rem;
 }
 
 ::selection {
@@ -131,8 +153,21 @@ textarea {
   min-height: 60vh;
 }
 
+@media (max-width: 640px) {
+  .page-shell {
+    padding-top: 7rem;
+    padding-bottom: 3rem;
+  }
+}
+
 .section-block {
   padding-block: 5rem;
+}
+
+@media (max-width: 640px) {
+  .section-block {
+    padding-block: 3rem;
+  }
 }
 
 .section-block + .section-block {
