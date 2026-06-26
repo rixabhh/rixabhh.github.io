@@ -89,8 +89,3 @@ What I'd do differently: Instrument time-on-screen from day one.
 We measured completion rate but not where users dropped off within
 the flow. Funnel visibility within the kiosk would have let us optimize
 individual steps, not just overall completion.
-
----
-
-## Next
-← Multi-Provider LLM Lead Scoring    Internal CX Platform →

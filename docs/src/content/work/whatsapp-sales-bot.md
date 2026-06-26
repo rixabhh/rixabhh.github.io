@@ -99,8 +99,3 @@ We didn't set a formal accuracy target for disqualification before launch.
 In retrospect, agreeing on "we will not disqualify a lead unless confidence
 exceeds X%" would have given us a clearer validation criterion and made the
 post-launch audit more structured.
-
----
-
-## Next
-← Identity Resolution Layer    Multi-Provider LLM Lead Scoring →

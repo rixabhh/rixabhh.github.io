@@ -119,8 +119,3 @@ What I'd do differently: Instrument from v1, not v2. Currently have
 no visibility into whether users are activating the trigger, which
 providers they're using, or where the flow breaks. Even a lightweight
 local log would give enough signal to prioritize v2 correctly.
-
----
-
-## Next
-← Internal CX Platform    Toolzi →

@@ -94,8 +94,3 @@ What I'd do differently: Instrument a "data confidence score" per record
 from day one. A binary accurate/inaccurate label misses the nuance of
 partial matches. A confidence distribution would have given us a better
 view of where the resolution was weakest.
-
----
-
-## Next
-← WhatsApp Sales Discovery Bot    Multi-Provider LLM Lead Scoring →

@@ -95,9 +95,8 @@ const withBase = (path: string) => `${basePath}${path === '/' ? '/' : path}`;
       padding-bottom: 4rem;
     }
 
-    .case-meta {
-      gap: 1rem;
-      padding-bottom: 2rem;
+    .case-study-header {
+      margin-bottom: 2rem;
     }
   }
 
@@ -110,8 +109,24 @@ const withBase = (path: string) => `${basePath}${path === '/' ? '/' : path}`;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 1.5rem;
-    margin-top: -1rem; /* overlap slightly with page header bottom padding */
+    margin-top: -1rem;
     padding-bottom: 3rem;
+  }
+
+  @media (max-width: 600px) {
+    .case-meta {
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem 1rem;
+      margin-top: 0;
+      padding-bottom: 2rem;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .case-meta {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
   }
 
   .meta-item {

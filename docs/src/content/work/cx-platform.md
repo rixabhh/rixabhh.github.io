@@ -117,8 +117,3 @@ Waiting until handoff to define metrics means the alpha period produces
 no data. Even basic logging - tickets opened, templates used, escalations
 triggered - during alpha would have given us a baseline to measure
 against at launch.
-
----
-
-## Next
-← Eshopbox Plus Kiosk Flow    Flick →

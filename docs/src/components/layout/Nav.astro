@@ -1,4 +1,6 @@
 ---
+import Icon from '../shared/Icon.astro';
+
 const navItems = [
   { href: '/work',     label: 'Work' },
   { href: '/projects', label: 'Projects' },
@@ -52,7 +54,7 @@ const isHome = pathname === '/';
         rel="noreferrer"
         class="nav-resume"
       >
-        Resume
+        <Icon name="download" size={13} /> Resume
       </a>
     </div>
   </div>
@@ -80,7 +82,7 @@ const isHome = pathname === '/';
         rel="noreferrer"
         class="mobile-link nav-resume-mobile"
       >
-        Resume
+        <Icon name="download" size={16} /> Download Resume
       </a>
     </div>
   </div>
@@ -232,6 +234,9 @@ const isHome = pathname === '/';
     text-decoration: none;
     box-shadow: 0 1px 3px rgba(26, 23, 20, 0.18);
     margin-left: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
   }
 
   .nav-resume:hover {
@@ -252,6 +257,9 @@ const isHome = pathname === '/';
     color: var(--color-accent);
     text-decoration: underline;
     text-underline-offset: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .menu-button {
@@ -284,12 +292,14 @@ const isHome = pathname === '/';
     min-height: 100dvh;
     background: var(--color-bg);
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
-    transition: opacity 180ms ease;
+    transition: opacity 180ms ease, visibility 180ms ease;
   }
 
   .mobile-menu[aria-hidden='false'] {
     opacity: 1;
+    visibility: visible;
     pointer-events: auto;
   }
 

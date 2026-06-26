@@ -103,8 +103,3 @@ What I'd do differently: Define precision and recall targets before shipping.
 We optimized for precision (don't misqualify a good lead) but didn't formally
 track recall (don't miss a good lead either). In retrospect, both metrics
 should have been instrumented from day one with agreed thresholds.
-
----
-
-## Next
-← Identity Resolution Layer    Eshopbox Plus Kiosk Flow →
