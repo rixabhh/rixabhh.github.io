@@ -27,4 +27,15 @@ const { label, title, description } = Astro.props;
     margin-top: 1.25rem;
     max-width: 38rem;
   }
+
+  @media (max-width: 600px) {
+    .page-header h1 {
+      font-size: clamp(1.5rem, 5vw, 2rem);
+    }
+
+    .page-header-desc {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+  }
 </style>

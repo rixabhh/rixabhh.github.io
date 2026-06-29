@@ -31,7 +31,7 @@ const withBase = (path: string) => `${basePath}${path === '/' ? '/' : path}`;
   description={entry.data.summary}
 >
   <article class="container-page case-study-page">
-    <div class="case-study-header">
+    <div class="case-study-header reveal">
       <PageHeader 
         label={entry.data.tags ? entry.data.tags.join(' · ') : 'Case Study'}
         title={entry.data.title}
@@ -60,11 +60,11 @@ const withBase = (path: string) => `${basePath}${path === '/' ? '/' : path}`;
       </div>
     </div>
 
-    <div class="case-study-content markdown-body">
+    <div class="case-study-content markdown-body reveal">
       <Content />
     </div>
 
-    <div class="case-study-nav">
+    <div class="case-study-nav reveal">
       <div class="nav-prev">
         {prev && (
           <a href={withBase(`/work/${prev.slug}`)} class="nav-link">
@@ -97,6 +97,15 @@ const withBase = (path: string) => `${basePath}${path === '/' ? '/' : path}`;
 
     .case-study-header {
       margin-bottom: 2rem;
+<<<<<<< HEAD
+=======
+    }
+
+    .case-meta {
+      gap: 1rem;
+      padding-bottom: 2rem;
+      grid-template-columns: 1fr 1fr;
+>>>>>>> 35437b6b (fix: resolve mobile menu toggle bug and improve UI polish)
     }
   }
 

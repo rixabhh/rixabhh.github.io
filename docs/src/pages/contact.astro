@@ -18,7 +18,7 @@ const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
       description="Open to APM and PM roles across India and globally. Available for freelance product consulting and early-career mentorship."
     />
 
-    <div class="contact-grid">
+    <div class="contact-grid reveal">
       <!-- ── Left column ── -->
       <div class="contact-left">
 
@@ -574,8 +574,9 @@ Cal.ns.connect("ui", {
     }
 
     .contact-link {
-      grid-template-columns: 2rem 1fr;
-      padding: 0.6rem 0;
+      grid-template-columns: 2.5rem 1fr;
+      padding: 0.75rem 0;
+      min-height: 3rem;
     }
 
     .open-to-block,
@@ -589,7 +590,7 @@ Cal.ns.connect("ui", {
     .field textarea {
       padding: 0.85rem 0.9rem;
       font-size: 1rem;
-      min-height: 2.75rem;
+      min-height: 3rem;
     }
 
     .cal-card {
@@ -605,6 +606,11 @@ Cal.ns.connect("ui", {
       width: 100%;
       justify-content: center;
       padding: 0.85rem 2rem;
+      min-height: 3rem;
+    }
+
+    .open-to-list li {
+      min-height: 3rem;
     }
   }
 

@@ -100,16 +100,20 @@ const isHome = pathname === '/';
     nav.classList.toggle('is-solid', !isHome || window.scrollY > 60);
   };
 
+  let menuIsOpen = false;
+
   const setMenuOpen = (open: boolean) => {
     if (!menuButton || !mobileMenu) return;
+    menuIsOpen = open;
     menuButton.setAttribute('aria-expanded', String(open));
+    menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
     mobileMenu.setAttribute('aria-hidden', String(!open));
     document.documentElement.classList.toggle('menu-open', open);
   };
 
   updateNav();
   window.addEventListener('scroll', updateNav, { passive: true });
-  menuButton?.addEventListener('click', () => setMenuOpen(true));
+  menuButton?.addEventListener('click', () => setMenuOpen(!menuIsOpen));
   closeButton?.addEventListener('click', () => setMenuOpen(false));
   mobileMenu?.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => setMenuOpen(false));

@@ -56,7 +56,7 @@ import { site, metrics, workItems } from '../data/site';
   ═══════════════════════════════════════ -->
   <section class="section-block metrics-section" aria-label="Key metrics">
     <div class="container-page">
-      <div class="metrics-header section-heading">
+      <div class="metrics-header section-heading reveal">
         <div class="section-heading-copy">
           <p class="text-mono">Impact</p>
           <h2 class="text-heading">Outcomes that matter</h2>
@@ -94,13 +94,13 @@ import { site, metrics, workItems } from '../data/site';
   <section class="section-block about-section">
     <div class="container-page">
       <div class="about-layout">
-        <div class="about-left">
+        <div class="about-left reveal">
           <p class="text-mono">About</p>
           <h2 class="text-heading about-headline">
             Product at the edge of engineering.
           </h2>
         </div>
-        <div class="about-right">
+        <div class="about-right reveal reveal-delay-1">
           <p class="text-body about-lead">{site.bio}</p>
           <div class="about-meta-row">
             <div class="about-meta-item">
@@ -209,7 +209,7 @@ import { site, metrics, workItems } from '../data/site';
   ═══════════════════════════════════════ -->
   <section class="section-block work-section">
     <div class="container-page">
-      <div class="section-heading">
+      <div class="section-heading reveal">
         <div class="section-heading-copy">
           <p class="text-mono">Selected work</p>
           <h2 class="text-heading">Case studies from product and ops</h2>
@@ -238,7 +238,7 @@ import { site, metrics, workItems } from '../data/site';
   ═══════════════════════════════════════ -->
   <section class="section-block cta-section">
     <div class="container-page">
-      <div class="cta-panel">
+      <div class="cta-panel reveal">
         <div class="cta-copy">
           <p class="text-mono">Connect</p>
           <h2 class="text-heading cta-headline">Open to product conversations.</h2>
@@ -344,7 +344,7 @@ import { site, metrics, workItems } from '../data/site';
 
   @media (max-width: 480px) {
     .hero-visual {
-      width: 16rem;
+      width: 14rem;
     }
   }
 
@@ -708,6 +708,46 @@ import { site, metrics, workItems } from '../data/site';
     }
   }
 
+  @media (max-width: 768px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      text-align: center;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 100%;
+    }
+
+    .hero-eyebrow {
+      justify-content: center;
+    }
+
+    .hero-lead {
+      max-width: 480px;
+    }
+
+    .hero-actions {
+      justify-content: center;
+    }
+
+    .hero-status {
+      justify-content: center;
+    }
+
+    .hero-visual {
+      order: 2;
+    }
+
+    .about-layout {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
   @media (max-width: 600px) {
     .hero-section {
       padding-top: 5rem;
@@ -715,7 +755,12 @@ import { site, metrics, workItems } from '../data/site';
     }
 
     .hero-headline {
-      font-size: clamp(2.25rem, 8vw, 3rem);
+      font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .hero-lead {
+      font-size: 0.95rem;
+      line-height: 1.6;
     }
 
     .hero-actions {
@@ -739,6 +784,23 @@ import { site, metrics, workItems } from '../data/site';
       width: 100%;
       flex-direction: row;
       flex-wrap: wrap;
+    }
+
+    .section-block {
+      padding-block: 3rem;
+    }
+
+    .metrics-row {
+      grid-template-columns: 1fr;
+    }
+
+    .metrics-row > :global(*) {
+      border-right: none !important;
+      border-bottom: 1px solid var(--color-border) !important;
+    }
+
+    .metrics-row > :global(*:last-child) {
+      border-bottom: none !important;
     }
   }
 
