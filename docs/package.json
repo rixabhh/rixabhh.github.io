@@ -15,6 +15,7 @@
     "@calcom/embed-react": "latest",
     "@keystatic/astro": "latest",
     "@keystatic/core": "latest",
+    "@microsoft/clarity": "^1.0.2",
     "astro": "4.16.19",
     "framer-motion": "^11.18.2",
     "geist": "latest",
