@@ -89,38 +89,43 @@ const isHome = pathname === '/';
 </nav>
 
 <script>
-  const nav = document.querySelector<HTMLElement>('.site-nav');
-  const menuButton = document.querySelector<HTMLButtonElement>('[data-menu-button]');
-  const closeButton = document.querySelector<HTMLButtonElement>('[data-close-button]');
-  const mobileMenu = document.querySelector<HTMLElement>('[data-mobile-menu]');
+  function initNav() {
+    const nav = document.querySelector<HTMLElement>('.site-nav');
+    const menuButton = document.querySelector<HTMLButtonElement>('[data-menu-button]');
+    const closeButton = document.querySelector<HTMLButtonElement>('[data-close-button]');
+    const mobileMenu = document.querySelector<HTMLElement>('[data-mobile-menu]');
 
-  const updateNav = () => {
-    if (!nav) return;
-    const isHome = nav.dataset.home === 'true';
-    nav.classList.toggle('is-solid', !isHome || window.scrollY > 60);
-  };
+    const updateNav = () => {
+      if (!nav) return;
+      const isHome = nav.dataset.home === 'true';
+      nav.classList.toggle('is-solid', !isHome || window.scrollY > 60);
+    };
 
-  let menuIsOpen = false;
+    let menuIsOpen = false;
 
-  const setMenuOpen = (open: boolean) => {
-    if (!menuButton || !mobileMenu) return;
-    menuIsOpen = open;
-    menuButton.setAttribute('aria-expanded', String(open));
-    menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
-    mobileMenu.setAttribute('aria-hidden', String(!open));
-    document.documentElement.classList.toggle('menu-open', open);
-  };
+    const setMenuOpen = (open: boolean) => {
+      if (!menuButton || !mobileMenu) return;
+      menuIsOpen = open;
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+      mobileMenu.setAttribute('aria-hidden', String(!open));
+      document.documentElement.classList.toggle('menu-open', open);
+    };
 
-  updateNav();
-  window.addEventListener('scroll', updateNav, { passive: true });
-  menuButton?.addEventListener('click', () => setMenuOpen(!menuIsOpen));
-  closeButton?.addEventListener('click', () => setMenuOpen(false));
-  mobileMenu?.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => setMenuOpen(false));
-  });
-  window.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') setMenuOpen(false);
-  });
+    updateNav();
+    window.addEventListener('scroll', updateNav, { passive: true });
+    menuButton?.addEventListener('click', () => setMenuOpen(!menuIsOpen));
+    closeButton?.addEventListener('click', () => setMenuOpen(false));
+    mobileMenu?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setMenuOpen(false));
+    });
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setMenuOpen(false);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initNav);
+  document.addEventListener('astro:page-load', initNav);
 </script>
 
 <style>
