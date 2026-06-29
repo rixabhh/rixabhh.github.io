@@ -1,9 +1,9 @@
 export const site = {
   name: 'Rishabh Singh',
-  title: 'AI and Technical PM',
-  tagline: 'I build AI products and the systems that make them work.',
+  title: 'AI & B2B SaaS PM',
+  tagline: 'I build AI products and B2B SaaS platforms that make them work.',
   role: 'Assistant Product Manager at Amkette (EvoFox)',
-  bio: 'I sit at the intersection of product strategy and engineering execution, owning discovery, spec authoring, cross-functional delivery, and instrumentation. Currently at Amkette (EvoFox), I lead CRO strategy, internal CX platform development, and AI automation systems.',
+  bio: 'I sit at the intersection of product strategy and engineering execution, owning discovery, spec authoring, cross-functional delivery, and instrumentation. Currently at Amkette (EvoFox), I lead CRO strategy, build internal B2B SaaS platforms, and ship AI automation systems with measurable business impact.',
   education: 'B.Tech CSE (Data Science) at SIET, graduating 2027',
   email: 'pro.rishabhsingh@gmail.com',
   links: {
@@ -73,9 +73,9 @@ export const workItems = [
     slug: 'cx-platform',
     company: 'Amkette (EvoFox)',
     title: 'Internal CX Platform',
-    summary: 'Built the product layer between a CX team and an external dev shop - from zero requirements to alpha handoff in one build cycle.',
+    summary: 'Designed and shipped a B2B SaaS platform from zero requirements to alpha handoff - bridging a CX team and an external dev shop in one build cycle.',
     impact: 'Unified CX tooling across teams',
-    tags: ['Internal Product', 'B2B SaaS', 'Amkette (EvoFox)', 'Active Alpha'],
+    tags: ['B2B SaaS', 'Internal Product', 'Amkette (EvoFox)', 'Active Alpha'],
   },
   {
     slug: 'flick',
@@ -131,6 +131,16 @@ export const usesCategories = [
       'Jira and GitHub Projects',
       'Notion',
       'A/B testing and experimentation',
+    ],
+  },
+  {
+    title: 'B2B SaaS',
+    items: [
+      'Internal platform design',
+      'Multi-tenant architecture understanding',
+      'Role-based access and permissions',
+      'CX tooling and workflow automation',
+      'Cross-team stakeholder alignment',
     ],
   },
   {
