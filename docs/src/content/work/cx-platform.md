@@ -4,7 +4,7 @@ company: "B2B SaaS"
 role: "Product Owner"
 timeline: "2025–ongoing"
 status: "Active alpha · Company name withheld · NDA"
-summary: "Designed and shipped a B2B SaaS platform from zero requirements to alpha handoff - bridging a CX team and an external dev shop in one build cycle."
+summary: "Designing and shipping a B2B SaaS platform from zero requirements to alpha handoff - bridging a CX team and an external dev shop in one build cycle."
 tags: ["Internal Product","B2B SaaS","Amkette (EvoFox)","Active Alpha"]
 ---
 

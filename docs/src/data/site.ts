@@ -73,7 +73,7 @@ export const workItems = [
     slug: 'cx-platform',
     company: 'Amkette (EvoFox)',
     title: 'Internal CX Platform',
-    summary: 'Designed and shipped a B2B SaaS platform from zero requirements to alpha handoff - bridging a CX team and an external dev shop in one build cycle.',
+    summary: 'Designing and shipping a B2B SaaS platform from zero requirements to alpha handoff - bridging a CX team and an external dev shop in one build cycle.',
     impact: 'Unified CX tooling across teams',
     tags: ['B2B SaaS', 'Internal Product', 'Amkette (EvoFox)', 'Active Alpha'],
   },
